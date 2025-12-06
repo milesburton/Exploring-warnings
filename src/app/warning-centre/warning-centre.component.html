@@ -1,0 +1,84 @@
+<div class="top-bar">
+  <!-- ICON BUTTON -->
+  <button
+    pButton
+    type="button"
+    class="alert-icon-btn"
+    [ngClass]="(borderClass$ | async)!"
+    icon="pi pi-exclamation-triangle"
+    (click)="panel.toggle($event)"
+  ></button>
+
+  <!-- LABEL BUTTON -->
+  <button
+    pButton
+    type="button"
+    class="alert-label-btn"
+    label="Client enquiry"
+  ></button>
+
+  <p-dropdown
+    class="top-select"
+    [options]="customerTypes"
+    [(ngModel)]="customerType"
+    optionLabel="label"
+    styleClass="top-select-inner"
+  ></p-dropdown>
+
+  <button
+    pButton
+    type="button"
+    label="Calculate"
+    class="top-calc-btn"
+  ></button>
+</div>
+
+
+<p-overlayPanel #panel [dismissable]="true" [showCloseIcon]="true" styleClass="bank-overlay">
+  <ng-container *ngIf="(messages$ | async) as messages">
+    <div class="error-panel bank-panel" *ngIf="messages.length; else allGood">
+      <div class="error-header bank-header">
+        <i class="pi pi-exclamation-circle"></i>
+        <span class="title">
+          Errors ({{ (counts$ | async)?.error ?? 0 }})  require your attention
+        </span>
+        <a class="clear" (click)="onClearAll($event)">
+          Clear all
+          <span class="shortcut-hint" title="Disabled">Ctrl+K</span>
+        </a>
+      </div>
+
+      <div class="error-list">
+        <div
+          *ngFor="let msg of messages; let i = index"
+          class="error-item"
+          [ngClass]="{ main: i === 0, 'real-estate': msg.type === 'real-estate', 'utility': msg.type === 'utility' }"
+        >
+          <span class="error-bullet" [ngClass]="{
+            'bullet-gold': msg.type === 'real-estate',
+            'bullet-blue': msg.type === 'utility'
+          }">!</span>
+          <div class="msg-text">{{ msg.text }}</div>
+          <button
+            pButton
+            type="button"
+            icon="pi pi-times"
+            class="close-btn p-button-rounded p-button-text"
+            (click)="onRemove(msg.id)"
+          >
+            <span class="shortcut-hint" title="Disabled">Esc</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #allGood>
+      <div class="error-panel ok bank-panel">
+        <div class="error-header bank-header">
+          <i class="pi pi-check-circle"></i>
+          <span class="title">All good  no validation messages 389</span>
+        </div>
+      </div>
+    </ng-template>
+  </ng-container>
+</p-overlayPanel>

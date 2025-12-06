@@ -1,0 +1,25 @@
+# Netlify configuration for alert-ui-example (Angular)
+
+[build]
+  command = "npm run build"
+  publish = "dist/alert-ui-example/browser"
+
+# Set Node version for build environment
+[context.production.environment]
+  NODE_VERSION = "20"
+
+# Optional: redirect all requests to index.html for Angular SPA routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Optional: deploy preview context (for PRs, branches)
+[context.deploy-preview]
+  command = "npm run build"
+  publish = "dist/alert-ui-example/browser"
+
+# Optional: branch deploy context
+[context.branch-deploy]
+  command = "npm run build"
+  publish = "dist/alert-ui-example/browser"
