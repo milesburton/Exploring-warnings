@@ -16,18 +16,22 @@ import { WarningsActions } from '../warnings/warnings.actions';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WarningCentreComponent {
-  messages$: Observable<WarningMessage[]> =
-    this.store.select(selectAllMessages);
-  counts$ = this.store.select(selectCounts);
+  messages$: Observable<WarningMessage[]>;
+  counts$: Observable<{ error: number; warning: number; info: number; total: number }>;
 
-  borderClass$ = this.store.select(selectHighestSeverity).pipe(
-    map(level => `border-${level}`),
-  );
+  borderClass$: Observable<string>;
 
   customerTypes = [{ label: 'Customer / SDS', value: 'sds' }];
   customerType = this.customerTypes[0];
 
-  constructor(private store: Store) {}
+  constructor(private store: Store) {
+    this.messages$ = this.store.select(selectAllMessages);
+    this.counts$ = this.store.select(selectCounts);
+
+    this.borderClass$ = this.store
+      .select(selectHighestSeverity)
+      .pipe(map(level => `border-${level}`));
+  }
 
   onRemove(id: string): void {
     this.store.dispatch(WarningsActions.removeMessage({ id }));
