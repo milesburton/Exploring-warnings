@@ -7,6 +7,11 @@ describe('warningsReducer extra coverage', () => {
     expect(state.messages.length).toBe(initialState.messages.length);
   });
 
+  it('should not remove message if id not found (cover filter branch)', () => {
+    const state = warningsReducer(initialState, WarningsActions.removeMessage({ id: 'not-found' }));
+    expect(state.messages).toEqual(initialState.messages);
+  });
+
   it('should clear all messages', () => {
     const state = warningsReducer(initialState, WarningsActions.clearAll());
     expect(state.messages.length).toBe(0);
