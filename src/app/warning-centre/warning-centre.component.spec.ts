@@ -2,6 +2,7 @@
 import { of } from 'rxjs';
 import { WarningCentreComponent } from './warning-centre.component';
 import { vi } from 'vitest';
+import { selectHighestSeverity } from '../warnings/warnings.selectors';
 
 describe('WarningCentreComponent', () => {
   let component: WarningCentreComponent;
@@ -45,5 +46,21 @@ describe('WarningCentreComponent', () => {
     expect(storeStub.dispatch).toHaveBeenCalledWith({
       type: '[Warnings] Clear All',
     });
+  });
+
+  it('should map borderClass$ correctly', async () => {
+    // selectHighestSeverity returns 'error', 'warning', etc.
+    const storeStub: any = {
+      select: vi.fn((selector) => {
+        if (selector === selectHighestSeverity) {
+          return of('error');
+        }
+        return of([]);
+      }),
+      dispatch: vi.fn(),
+    };
+    const comp = new WarningCentreComponent(storeStub);
+    const result = await comp.borderClass$.toPromise();
+    expect(result).toBe('border-error');
   });
 });
