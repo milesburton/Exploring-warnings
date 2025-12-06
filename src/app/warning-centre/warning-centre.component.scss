@@ -1,3 +1,50 @@
+.bank-overlay {
+  .p-overlaypanel-content {
+    padding: 0;
+  }
+}
+
+.bank-panel {
+  background: rgba(18, 22, 34, 0.98);
+  border: 1.5px solid #d4af37;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
+  border-radius: 16px;
+  padding: 18px 20px;
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+}
+
+.bank-header {
+  color: #d4af37;
+  font-size: 1.1em;
+  letter-spacing: 0.01em;
+}
+
+.shortcut-hint {
+  background: #23272e;
+  color: #bdbdbd;
+  border-radius: 4px;
+  font-size: 11px;
+  padding: 2px 6px;
+  margin-left: 8px;
+  opacity: 0.7;
+  pointer-events: none;
+  user-select: none;
+}
+
+.error-item.real-estate {
+  border-left: 4px solid #d4af37;
+  background: linear-gradient(90deg, #23272e 80%, #d4af3722 100%);
+}
+.error-item.utility {
+  border-left: 4px solid #1976d2;
+  background: linear-gradient(90deg, #23272e 80%, #1976d222 100%);
+}
+.bullet-gold {
+  color: #d4af37;
+}
+.bullet-blue {
+  color: #1976d2;
+}
 .top-bar {
   display: flex;
   align-items: center;
