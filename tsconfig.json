@@ -5,6 +5,7 @@
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "importHelpers": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "types": ["vitest/globals"]
   }
 }
