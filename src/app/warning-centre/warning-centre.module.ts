@@ -8,13 +8,14 @@ import { DropdownModule } from 'primeng/dropdown';
 import { WarningCentreComponent } from './warning-centre.component';
 
 @NgModule({
-  declarations: [WarningCentreComponent],
+  declarations: [],
   imports: [
     CommonModule,
     FormsModule,
     ButtonModule,
     OverlayPanelModule,
     DropdownModule,
+    WarningCentreComponent,
   ],
   exports: [WarningCentreComponent],
 })

@@ -6,6 +6,6 @@ export const WarningsActions = createActionGroup({
   events: {
     'Add Message': props<{ message: WarningMessage }>(),
     'Remove Message': props<{ id: string }>(),
-    'Clear All': props<void>(),
+    'Clear All': props<{}>(),
   },
 });
