@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-
-import { Component } from '@angular/core';
-import { WarningCentreComponent } from './warning-centre/warning-centre.component';
 import { CommonModule } from '@angular/common';
+import { WarningCentreComponent } from './warning-centre/warning-centre.component';
 
 @Component({
   selector: 'app-root',

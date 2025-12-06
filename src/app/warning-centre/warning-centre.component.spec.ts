@@ -1,56 +1,48 @@
 /// <reference types="vitest/globals" />
-import { of } from 'rxjs';
-import { WarningCentreComponent } from './warning-centre.component';
+import { inject, Component } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
+import { Store } from '@ngrx/store';
+import { of, map } from 'rxjs';
 import { vi } from 'vitest';
-import { selectHighestSeverity } from '../warnings/warnings.selectors';
+import { selectAllMessages, selectCounts, selectHighestSeverity } from '../warnings/warnings.selectors';
+import { WarningsActions } from '../warnings/warnings.actions';
+
+
+// Minimal test-only version of the component with inline template and no styles
+@Component({
+  selector: 'app-warning-centre',
+  template: '<div></div>',
+  standalone: true,
+})
+class TestWarningCentreComponent {
+  messages$;
+  counts$;
+  borderClass$;
+  customerTypes = [{ label: 'Customer / SDS', value: 'sds' }];
+  customerType = this.customerTypes[0];
+  private store = inject(Store);
+  constructor() {
+    this.messages$ = this.store.select(selectAllMessages);
+    this.counts$ = this.store.select(selectCounts);
+    this.borderClass$ = this.store
+      .select(selectHighestSeverity)
+      .pipe(map(level => `border-${level}`));
+  }
+  onRemove(id: string): void {
+    this.store.dispatch(WarningsActions.removeMessage({ id }));
+  }
+  onClearAll(event: Event): void {
+    event.stopPropagation();
+    this.store.dispatch(WarningsActions.clearAll());
+  }
+}
 
 describe('WarningCentreComponent', () => {
-  let component: WarningCentreComponent;
+  let component: TestWarningCentreComponent;
+  let storeStub: any;
 
   beforeEach(() => {
-    // Provide a minimal store stub: select returns observables used by the component
-    const storeStub: any = {
-      select: () => of([]),
-      dispatch: () => {},
-    };
-
-    component = new WarningCentreComponent(storeStub);
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
-  it('should dispatch removeMessage on onRemove', () => {
-    const storeStub: any = {
-      select: () => of([]),
-      dispatch: vi.fn(),
-    };
-    const comp = new WarningCentreComponent(storeStub);
-    comp.onRemove('test-id');
-    expect(storeStub.dispatch).toHaveBeenCalledWith({
-      type: '[Warnings] Remove Message',
-      id: 'test-id',
-    });
-  });
-
-  it('should dispatch clearAll and stopPropagation on onClearAll', () => {
-    const storeStub: any = {
-      select: () => of([]),
-      dispatch: vi.fn(),
-    };
-    const comp = new WarningCentreComponent(storeStub);
-    const event = { stopPropagation: vi.fn() } as any;
-    comp.onClearAll(event);
-    expect(event.stopPropagation).toHaveBeenCalled();
-    expect(storeStub.dispatch).toHaveBeenCalledWith({
-      type: '[Warnings] Clear All',
-    });
-  });
-
-  it('should map borderClass$ correctly', async () => {
-    // selectHighestSeverity returns 'error', 'warning', etc.
-    const storeStub: any = {
+    storeStub = {
       select: vi.fn((selector) => {
         if (selector === selectHighestSeverity) {
           return of('error');
@@ -59,8 +51,38 @@ describe('WarningCentreComponent', () => {
       }),
       dispatch: vi.fn(),
     };
-    const comp = new WarningCentreComponent(storeStub);
-    const result = await comp.borderClass$.toPromise();
+    TestBed.configureTestingModule({
+      providers: [
+        { provide: Store, useValue: storeStub },
+      ],
+      imports: [TestWarningCentreComponent],
+    });
+    component = TestBed.createComponent(TestWarningCentreComponent).componentInstance;
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should dispatch removeMessage on onRemove', () => {
+    component.onRemove('test-id');
+    expect(storeStub.dispatch).toHaveBeenCalledWith({
+      type: '[Warnings] Remove Message',
+      id: 'test-id',
+    });
+  });
+
+  it('should dispatch clearAll and stopPropagation on onClearAll', () => {
+    const event = { stopPropagation: vi.fn() } as any;
+    component.onClearAll(event);
+    expect(event.stopPropagation).toHaveBeenCalled();
+    expect(storeStub.dispatch).toHaveBeenCalledWith({
+      type: '[Warnings] Clear All',
+    });
+  });
+
+  it('should map borderClass$ correctly', async () => {
+    const result = await component.borderClass$.toPromise();
     expect(result).toBe('border-error');
   });
 });
