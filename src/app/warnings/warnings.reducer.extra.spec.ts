@@ -1,3 +1,4 @@
+/// <reference types="vitest/globals" />
 import { warningsReducer, initialState } from './warnings.reducer';
 import { WarningsActions } from './warnings.actions';
 

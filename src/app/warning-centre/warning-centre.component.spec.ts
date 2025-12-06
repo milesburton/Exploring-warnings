@@ -1,3 +1,4 @@
+/// <reference types="vitest/globals" />
 import { of } from 'rxjs';
 import { WarningCentreComponent } from './warning-centre.component';
 import { vi } from 'vitest';

@@ -4,7 +4,11 @@
   "features": {
     "ghcr.io/devcontainers/features/git:1": {}
   },
-  "postCreateCommand": "npm install",
+  "mounts": ["source=${env:SSH_AUTH_SOCK},target=/ssh-agent,type=bind"],
+  "remoteEnv": {
+    "SSH_AUTH_SOCK": "/ssh-agent"
+  },
+  "postCreateCommand": "npm install -g @angular/cli@19 && npm install",
   "forwardPorts": [4200],
   "customizations": {
     "vscode": {
