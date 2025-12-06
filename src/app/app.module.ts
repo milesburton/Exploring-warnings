@@ -14,14 +14,14 @@ import { warningsReducer, warningsFeatureKey } from './warnings/warnings.reducer
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppComponent,
-    WarningCentreModule,
     StoreModule.forRoot({
       [warningsFeatureKey]: warningsReducer,
     }),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
     }),
+    AppComponent,
+    WarningCentreModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

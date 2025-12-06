@@ -9,11 +9,25 @@ import {
 } from '../warnings/warnings.selectors';
 import { WarningsActions } from '../warnings/warnings.actions';
 
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { DropdownModule } from 'primeng/dropdown';
+
 @Component({
   selector: 'app-warning-centre',
   templateUrl: './warning-centre.component.html',
   styleUrls: ['./warning-centre.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    ButtonModule,
+    OverlayPanelModule,
+    DropdownModule,
+  ],
 })
 export class WarningCentreComponent {
   messages$: Observable<WarningMessage[]>;
