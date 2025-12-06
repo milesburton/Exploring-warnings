@@ -6,6 +6,10 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "sourceMap": true,
-    "types": ["vitest/globals"]
+    "types": ["vitest/globals"],
+    "useDefineForClassFields": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": ["ES2022", "DOM"]
   }
 }
