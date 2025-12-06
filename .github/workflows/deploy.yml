@@ -1,0 +1,26 @@
+name: Build, Test & Deploy (Node 25)
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-test-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 25
+          cache: npm
+
+      - run: npm ci
+      - run: npm test -- --run
+      - run: npm run build -- --configuration production
+
+      - run: npx netlify deploy --prod --dir=dist/alert-ui-example/browser
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
