@@ -1,7 +1,6 @@
 # Warning Centre UI (Angular 19 + Vite)
 
 [![CI](https://github.com/milesburton/Exploring-warnings/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/milesburton/Exploring-warnings/actions/workflows/ci.yml)
-
 ![Coverage 100%](https://img.shields.io/badge/coverage-100%25-brightgreen)
 ![Lint Passing](https://img.shields.io/badge/lint-passing-brightgreen)
 ![E2E Passing](https://img.shields.io/badge/e2e-passing-brightgreen)
