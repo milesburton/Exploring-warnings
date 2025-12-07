@@ -57,17 +57,17 @@ export class WarningCentreComponent implements OnInit, OnDestroy {
     this.messagesSub = this.messages$
       .pipe(takeUntil(this.destroy$))
       .subscribe(messages => {
-        // Set up auto-dismiss timers for messages with autoDismiss
+
         messages.forEach(msg => {
           if (msg.autoDismiss && !this.autoDismissTimers.has(msg.id)) {
             const timer = setTimeout(() => {
               this.onRemove(msg.id);
               this.autoDismissTimers.delete(msg.id);
-            }, 5000); // 5 seconds
+            }, 5000);
             this.autoDismissTimers.set(msg.id, timer);
           }
         });
-        // Clean up timers for messages that have been removed
+
         Array.from(this.autoDismissTimers.keys()).forEach(id => {
           if (!messages.find(m => m.id === id)) {
             clearTimeout(this.autoDismissTimers.get(id));
@@ -83,7 +83,7 @@ export class WarningCentreComponent implements OnInit, OnDestroy {
     if (this.messagesSub) {
       this.messagesSub.unsubscribe();
     }
-    // Clean up all timers
+
     this.autoDismissTimers.forEach(timer => clearTimeout(timer));
     this.autoDismissTimers.clear();
   }

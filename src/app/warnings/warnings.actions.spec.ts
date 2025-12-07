@@ -1,4 +1,4 @@
-/// <reference types="vitest/globals" />
+
 import { WarningsActions } from './warnings.actions';
 
 describe('WarningsActions', () => {
@@ -17,7 +17,7 @@ describe('WarningsActions', () => {
   it('should create Clear All action', () => {
     const action = WarningsActions.clearAll();
     expect(action.type).toBe('[Warnings] Clear All');
-    // No payload for clearAll
+
     expect(Object.keys(action)).toEqual(['type']);
   });
 });

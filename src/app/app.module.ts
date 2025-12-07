@@ -9,7 +9,7 @@ import { WarningCentreModule } from './warning-centre/warning-centre.module';
 import { warningsReducer, warningsFeatureKey } from './warnings/warnings.reducer';
 
 @NgModule({
-  // Standalone components go in imports, not declarations
+
   declarations: [],
   imports: [
     BrowserModule,
