@@ -96,7 +96,7 @@ export class WarningCentreComponent implements OnInit, OnDestroy {
               return 'pi pi-exclamation-triangle';
             case 'error':
             default:
-              return 'pi pi-exclamation-circle';
+              return 'pi pi-times-circle';
           }
         })
       );
@@ -110,7 +110,7 @@ export class WarningCentreComponent implements OnInit, OnDestroy {
           case 'warning':
             return 'pi pi-exclamation-triangle';
           case 'error':
-            return 'pi pi-exclamation-circle';
+            return 'pi pi-times-circle';
           default:
             return 'pi pi-info-circle';
         }
