@@ -1,4 +1,4 @@
-# Alert Centre Demo (Angular 19 + Vite + Node 22/25)
+# Alert Centre Demo (Angular 19 + Vite)
 
 ![Coverage 100%](https://img.shields.io/badge/coverage-100%25-brightgreen)
 ![Lint Passing](https://img.shields.io/badge/lint-passing-brightgreen)
@@ -13,7 +13,7 @@ This project demonstrates a compact Angular 19 generic alert-centre system with 
 - PrimeNG
 - Vite + Vitest
 - Playwright E2E
-- DevContainer (Node 22, see `.devcontainer/devcontainer.json`)
+- DevContainer (see `.devcontainer/devcontainer.json`)
 - GitHub Actions (CI: lint, unit, E2E, build, Netlify deploy)
 - Netlify Hosting ([Live Demo](https://alert-example.netlify.app/))
 
@@ -105,7 +105,7 @@ Build output: `dist/alert-ui-example/browser`
 
 ## Dev Container
 
-- Uses Node 22: `mcr.microsoft.com/devcontainers/javascript-node:22`
+- Uses Node lts, 'mcr.microsoft.com/devcontainers/javascript-node:22`
 - Pre-installs Angular CLI 19, ESLint, Prettier, spell checker
 
 ### Playwright Dependencies
@@ -115,7 +115,6 @@ The dev container Dockerfile installs system libraries required for headless Chr
 
 ## GitHub Actions
 
-- Node 25 for CI
 - Steps: checkout, setup node, install, lint, unit test, E2E, build, Netlify deploy
 
 
