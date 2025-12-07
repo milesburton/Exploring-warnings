@@ -4,6 +4,10 @@ const angularTemplate = require('@angular-eslint/eslint-plugin-template');
 const importPlugin = require('eslint-plugin-import');
 
 module.exports = [
+    // Global ignores moved from .eslintignore
+    {
+        ignores: ['**/*.html'],
+    },
     {
         files: ['**/*.ts'],
         languageOptions: {
@@ -23,9 +27,5 @@ module.exports = [
             'import/order': 'warn',
             'lines-between-class-members': ['error', 'always'],
         },
-    },
-    // Exclude HTML files from linting
-    {
-        ignores: ['**/*.html'],
     },
 ];
