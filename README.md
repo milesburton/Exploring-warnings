@@ -1,4 +1,4 @@
-# Alert Centre Demo (Angular 19 + Vite)
+# Warning Centre UI (Angular 19 + Vite)
 
 ![Coverage 100%](https://img.shields.io/badge/coverage-100%25-brightgreen)
 ![Lint Passing](https://img.shields.io/badge/lint-passing-brightgreen)
@@ -6,7 +6,7 @@
 
 
 
-This project demonstrates a compact Angular 19, generic alert centre with Pokémon-themed mock data:
+This project demonstrates a compact Angular 19, generic warning centre with Pokémon-themed mock data:
 
 - Angular 19
 - NgRx 19
@@ -152,6 +152,32 @@ The dev container Dockerfile installs system libraries required for headless Chr
 Design tokens are centralised CSS variables defined in `src/styles/design-tokens.scss` for colours, backgrounds, borders, text, and shadows. Components reference these tokens to keep styles consistent and accessible.
 
 Light/Dark mode:
+---
+
+## Conventional Commits Enforcement
+
+Commit messages are validated against the Conventional Commits specification via Commitlint.
+
+- Hook: `.husky/commit-msg` runs `npx --no -- commitlint --edit $1` on every commit.
+- Config: `commitlint.config.js` extends `@commitlint/config-conventional`.
+- Examples:
+	- Valid: `feat(warnings): add filter by severity`
+	- Valid: `fix(ui): correct popover width in light mode`
+	- Invalid: `update stuff` (missing type/scope/subject)
+
+### Commitlint Unit Test
+
+We include a small test to verify the configuration works. It lints known-valid and known-invalid messages using Commitlint’s API.
+
+Run:
+
+```bash
+npm run test
+```
+
+The test lives in `src/commitlint.spec.ts`.
+
+---
 - Theme variables are defined in `src/styles.scss` under `:root` (light) and `.theme-dark` (dark).
 - `ThemeService` initialises the theme based on OS preference, persists a manual choice, and supports Auto/Light/Dark modes.
 - A debug toolbar combines version/date with a manual add form and a theme toggle; it is masked in visual tests.
