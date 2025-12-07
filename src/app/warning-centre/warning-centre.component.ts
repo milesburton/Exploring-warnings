@@ -42,6 +42,8 @@ export class WarningCentreComponent implements OnInit, OnDestroy {
 
   private fadingIds: Set<string> = new Set();
 
+  private closeTimer: any;
+
   private destroy$ = new Subject<void>();
 
   private messagesSub?: any;
@@ -49,6 +51,10 @@ export class WarningCentreComponent implements OnInit, OnDestroy {
   counts$: Observable<{ error: number; warning: number; info: number; total: number }>;
 
   borderClass$: Observable<string>;
+
+  panelClass$: Observable<string>;
+
+  iconClass$: Observable<string>;
 
   customerTypes = [{ label: 'Trainer / Pokémon', value: 'pokemon' }];
 
@@ -73,6 +79,25 @@ export class WarningCentreComponent implements OnInit, OnDestroy {
     this.borderClass$ = this.store
       .select(selectHighestSeverity)
       .pipe(map(level => `border-${level}`));
+    this.panelClass$ = this.store
+      .select(selectHighestSeverity)
+      .pipe(map(level => `panel-${level}`));
+
+    this.iconClass$ = this.store
+      .select(selectHighestSeverity)
+      .pipe(
+        map(level => {
+          switch (level) {
+            case 'info':
+              return 'pi pi-info-circle';
+            case 'warning':
+              return 'pi pi-exclamation-triangle';
+            case 'error':
+            default:
+              return 'pi pi-exclamation-circle';
+          }
+        })
+      );
   }
 
   ngOnInit(): void {
@@ -140,6 +165,11 @@ export class WarningCentreComponent implements OnInit, OnDestroy {
     this.protectedIds.add(id);
 
     this.hoveredItemCount++;
+
+    if (this.closeTimer) {
+      clearTimeout(this.closeTimer);
+      this.closeTimer = null;
+    }
   }
 
   onItemMouseLeave(id: string): void {
@@ -167,7 +197,15 @@ export class WarningCentreComponent implements OnInit, OnDestroy {
 
   onPanelMouseLeave(): void {
     if (this.hoveredItemCount === 0 && this.panelRef) {
-      this.panelRef.hide();
+      if (this.closeTimer) {
+        clearTimeout(this.closeTimer);
+      }
+      this.closeTimer = setTimeout(() => {
+        if (this.hoveredItemCount === 0) {
+          this.panelRef.hide();
+        }
+        this.closeTimer = null;
+      }, 300);
     }
   }
 }

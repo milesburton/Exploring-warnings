@@ -6,7 +6,6 @@ test.describe('Warning Centre visual snapshot', () => {
   test('renders consistently', async ({ page }) => {
     await page.goto('http://localhost:4200/');
 
-    // Ensure main UI is visible before snapshot
     await expect(page.locator('app-root')).toBeVisible();
     await expect(page.locator('app-warning-centre, app-warning-centre-root, app-warning-centre-component')).toBeVisible({ timeout: 3000 });
 
@@ -14,7 +13,6 @@ test.describe('Warning Centre visual snapshot', () => {
       await expect(page).toHaveScreenshot('warning-centre.png', {
         fullPage: true,
         maxDiffPixelRatio: 0,
-        // Mask manual test panel to avoid visual diffs
         mask: [page.locator('.manual-add-panel')],
       });
   });

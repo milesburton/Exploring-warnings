@@ -54,6 +54,7 @@
   border-radius: 8px;
   background: var(--bg-deep-3);
   border: 2px solid transparent;
+  transition: border-color 200ms ease, box-shadow 200ms ease, background-color 200ms ease;
 }
 
 .border-error {
@@ -107,6 +108,7 @@
   border-radius: 16px;
   padding: 18px 20px;
   font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+  transition: border-color 200ms ease, box-shadow 200ms ease, background-color 200ms ease;
 }
 
 .error-panel {
@@ -118,6 +120,33 @@
   font-size: 13px;
   font-weight: 600;
   text-shadow: var(--shadow-text-dark);
+}
+
+.error-panel.panel-error {
+  background: linear-gradient(180deg, var(--color-error) 0%, #b91c1c 85%);
+}
+
+.error-panel.panel-warning {
+  background: linear-gradient(180deg, var(--color-warning) 0%, #ca8a04 85%);
+}
+
+.error-panel.panel-info {
+  background: linear-gradient(180deg, var(--color-info) 0%, #1e3a8a 85%);
+}
+
+.pok-panel.panel-error {
+  border: 1.5px solid var(--color-error);
+  box-shadow: var(--shadow-error);
+}
+
+.pok-panel.panel-warning {
+  border: 1.5px solid var(--color-warning);
+  box-shadow: var(--shadow-warning);
+}
+
+.pok-panel.panel-info {
+  border: 1.5px solid var(--color-info);
+  box-shadow: var(--shadow-info);
 }
 
 .error-panel.ok {
