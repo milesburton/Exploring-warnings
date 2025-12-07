@@ -10,17 +10,17 @@
 
 .alert-label-input,
 .top-select-input {
-  background: radial-gradient(circle at top left, #111827 0, #020617 55%, #000 100%);
-  color: var(--text-panel, #e5e7eb);
+  background: var(--surface-ground);
+  color: var(--text-color);
   border-radius: 8px;
-  border: 1px solid var(--border-muted, rgb(255 255 255 / 20%));
+  border: 1px solid var(--surface-border);
   padding: 6px 12px;
   min-width: 220px;
 }
 
 .alert-label-input::placeholder,
 .top-select-input::placeholder {
-  color: #9ca3af;
+  color: var(--text-color-secondary);
 }
 
 .search-input {
@@ -36,7 +36,7 @@
 .search-input .search-icon {
   position: absolute;
   right: 10px;
-  color: #9ca3af;
+  color: var(--text-color-secondary);
   pointer-events: none;
   font-size: 14px;
 }
@@ -209,8 +209,8 @@
   align-items: center;
   padding: 6px 8px;
   border-radius: 6px;
-  background: rgb(0 0 0 / 25%);
-  color: #fff;
+  background: var(--bg-list, rgb(0 0 0 / 12%));
+  color: var(--color-text-light);
   font-size: 13px;
   font-weight: 500;
   max-height: 120px;
@@ -218,22 +218,22 @@
 }
 
 .error-item.main {
-  border: 1px solid rgb(255 255 255 / 50%);
+  border: 1px solid var(--surface-border);
 }
 
 .error-item.msg-error {
   border-left: 4px solid var(--color-error);
-  background: #000;
+  background: var(--bg-deep-3);
 }
 
 .error-item.msg-warning {
   border-left: 4px solid var(--color-warning);
-  background: #000;
+  background: var(--bg-deep-3);
 }
 
 .error-item.msg-info {
   border-left: 4px solid var(--color-info);
-  background: #000;
+  background: var(--bg-deep-3);
 }
 
 .error-item.fading {
