@@ -4,30 +4,30 @@
 :root {
   --surface-ground: #f8f9fa;
   --surface-border: #dfe3e8;
-  --text-color: #2b2d31;
-  --text-color-secondary: #5f6368;
-  --color-error: #D32F2F;
-  --color-warning: #FBC02D;
-  --color-success: #388E3C;
-  --color-info: #1976D2;
+  --text-colour: #2b2d31;
+  --text-colour-secondary: #5f6368;
+  --colour-error: #D32F2F;
+  --colour-warning: #FBC02D;
+  --colour-success: #388E3C;
+  --colour-info: #1976D2;
 }
 
 .theme-dark {
   --surface-ground: #0f1115;
   --surface-border: #23262b;
-  --text-color: #e5e7eb;
-  --text-color-secondary: #c0c4c9;
-  --color-error: #ef4444;
-  --color-warning: #f59e0b;
-  --color-success: #22c55e;
-  --color-info: #3b82f6;
+  --text-colour: #e5e7eb;
+  --text-colour-secondary: #c0c4c9;
+  --colour-error: #ef4444;
+  --colour-warning: #f59e0b;
+  --colour-success: #22c55e;
+  --colour-info: #3b82f6;
 }
 
 body {
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background: var(--surface-ground);
-  color: var(--text-color);
+  color: var(--text-colour);
 }
 
 .p-popover.pok-overlay {
@@ -41,7 +41,7 @@ body {
 .p-tooltip {
   .p-tooltip-text {
     background: var(--surface-border);
-    color: var(--text-color);
+    color: var(--text-colour);
     padding: 0.4rem 0.6rem;
     border-radius: 6px;
     box-shadow: 0 4px 10px rgb(0 0 0 / 12%);

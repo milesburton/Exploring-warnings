@@ -6,7 +6,7 @@
   padding: 0.75rem 1rem;
   border-top: 1px solid var(--surface-border, #dfe3e8);
   background: var(--surface-ground, #f8f9fa);
-  color: var(--text-color, #2b2d31);
+  color: var(--text-colour, #2b2d31);
   box-shadow: 0 -4px 12px rgb(0 0 0 / 8%);
   z-index: 1000;
 
@@ -21,7 +21,7 @@
     display: flex;
     justify-content: flex-start;
     font-size: 0.85rem;
-    color: var(--text-color-secondary, #5f6368);
+    color: var(--text-colour-secondary, #5f6368);
 
     .footer-inner {
       display: inline-flex;
