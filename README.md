@@ -1,6 +1,3 @@
-
-
-
 # Alert Centre Demo (Angular 19 + Vite + Node 20/25)
 
 ![Coverage 100%](https://img.shields.io/badge/coverage-100%25-brightgreen)
@@ -19,6 +16,9 @@ This project demonstrates a compact Angular 19 generic alert-centre system with 
 - DevContainer (Node 20, see `.devcontainer/devcontainer.json`)
 - GitHub Actions (CI: lint, unit, E2E, build, Netlify deploy)
 - Netlify Hosting ([Live Demo](https://alert-example.netlify.app/))
+
+
+
 
 ## Getting Started
 
