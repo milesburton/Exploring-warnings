@@ -6,7 +6,7 @@
 
 
 
-This project demonstrates a compact Angular 19 generic alert-centre system with Pokémon-themed mock data:
+This project demonstrates a compact Angular 19, generic alert centre with Pokémon-themed mock data:
 
 - Angular 19
 - NgRx 19
@@ -14,7 +14,7 @@ This project demonstrates a compact Angular 19 generic alert-centre system with 
 - Vite + Vitest
 - Playwright E2E
 - DevContainer (see `.devcontainer/devcontainer.json`)
-- GitHub Actions (CI: lint, unit, E2E, build, Netlify deploy)
+- GitHub Actions (CI: lint, unit, E2E, build)
 - Netlify Hosting ([Live Demo](https://alert-example.netlify.app/))
 
 
@@ -89,10 +89,10 @@ Notes:
 - Baselines are stored next to the spec under a `*-snapshots/` folder; subsequent runs compare against the baseline and fail on diffs.
 - We also capture the UI with the dialog open in `e2e/visual-open.spec.ts` (soft assertion). It opens the popover via `.alert-icon-btn` and snapshots `warning-centre-open.png` to verify spacing and overlay visuals.
 
-Interaction behavior:
+Interaction behaviour:
 - Error items auto-dismiss after 5s unless hovered or clicked — interaction cancels dismissal.
 - Removal applies a brief fade-and-collapse animation so the dialog size changes smoothly.
- - Snapshot assertion uses a soft check: `expect.soft(page).toHaveScreenshot(...)` so visual diffs warn but do not fail CI. Switch to a hard assertion if strict enforcement is required.
+- Snapshot assertion uses a soft check: `expect.soft(page).toHaveScreenshot(...)` so visual diffs warn but do not fail CI. Switch to a hard assertion if strict enforcement is required.
 
 ## Build
 
@@ -105,7 +105,7 @@ Build output: `dist/alert-ui-example/browser`
 
 ## Dev Container
 
-- Uses Node lts, 'mcr.microsoft.com/devcontainers/javascript-node:22`
+- Uses Node LTS, `mcr.microsoft.com/devcontainers/javascript-node:22`
 - Pre-installs Angular CLI 19, ESLint, Prettier, spell checker
 
 ### Playwright Dependencies
@@ -115,7 +115,9 @@ The dev container Dockerfile installs system libraries required for headless Chr
 
 ## GitHub Actions
 
-- Steps: checkout, setup node, install, lint, unit test, E2E, build, Netlify deploy
+- Steps: checkout, set up Node, install, lint, unit test, E2E, build
+	- Visual tests: we mask dynamic regions (version/date footer, debug tools) and use OS-specific baselines.
+	- A small tolerance is applied for certain element-level screenshots on CI to account for rendering variance.
 
 
 ## Testing & Linting
@@ -124,32 +126,35 @@ The dev container Dockerfile installs system libraries required for headless Chr
 - E2E: `npm run test:e2e` (Playwright)
 - Coverage: `npm run coverage`
 - Lint: `npm run lint`
-- Pre-commit: `lint-staged` via Husky
-- Pre-push: All tests and lint must pass
+- Pre-commit: `lint-staged` via Husky (also bumps version and writes build info)
+- Pre-push: all tests and lint must pass
 
 ---
 
 
 ## Formatting & Linting
 
-- ESLint config: `.eslintrc.js`, `eslint.config.js`
+- ESLint config: `eslint.config.js` (flat config)
 - Prettier: VS Code extension recommended
-- All HTML files ignored by ESLint
+- HTML files ignored by ESLint (configured via flat config)
 
-## Netlify
+## Versioning & Build Info
 
-- Deploys from `main` branch
-- Build command: `npm run build`
-- Publish directory: `dist/alert-ui-example/browser`
-- SPA routing via `netlify.toml`
+- Each commit bumps the patch version and writes `src/version.ts`.
+- The app footer shows version and the date of the latest commit.
 
 ## UI
 
 - Pokémon-themed background and mock data
 
-### Design Tokens
+### Design Tokens & Themes
 
-Design tokens are centralized CSS variables defined in `src/styles/design-tokens.scss` for colors, backgrounds, borders, text, and shadows. Component SCSS references these tokens to keep styles consistent and accessible.
+Design tokens are centralised CSS variables defined in `src/styles/design-tokens.scss` for colours, backgrounds, borders, text, and shadows. Components reference these tokens to keep styles consistent and accessible.
+
+Light/Dark mode:
+- Theme variables are defined in `src/styles.scss` under `:root` (light) and `.theme-dark` (dark).
+- `ThemeService` initialises the theme based on OS preference, persists a manual choice, and supports Auto/Light/Dark modes.
+- A debug toolbar combines version/date with a manual add form and a theme toggle; it is masked in visual tests.
 
 ---
 

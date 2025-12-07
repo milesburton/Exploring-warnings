@@ -30,7 +30,6 @@ body {
   color: var(--text-color);
 }
 
-/* PrimeNG Popover overlay: global styles (overlay renders at root) */
 .p-popover.pok-overlay {
   transform: translateY(12px);
 }
@@ -39,7 +38,6 @@ body {
   padding: 0;
 }
 
-/* Improve tooltip readability: solid background and spacing */
 .p-tooltip {
   .p-tooltip-text {
     background: var(--surface-border);
