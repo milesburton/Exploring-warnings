@@ -71,12 +71,7 @@
           (click)="onItemClick(msg.id)"
         >
           <i
-            class="error-bullet pi"
-            [ngClass]="{
-              'pi-exclamation-circle': msg.level === 'error',
-              'pi-exclamation-triangle': msg.level === 'warning',
-              'pi-info-circle': msg.level === 'info'
-            }"
+            [class]="'error-bullet pi ' + (msg.level === 'error' ? 'pi-exclamation-circle' : (msg.level === 'warning' ? 'pi-exclamation-triangle' : 'pi-info-circle'))"
           ></i>
           <div class="msg-text">{{ msg.text }}</div>
           <button
