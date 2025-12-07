@@ -98,21 +98,34 @@
 }
 
 
+
 .error-panel {
   min-width: 520px;
-  background: #f87171; /* solid red for errors */
+  background: #f87171;
   border-radius: 10px;
-  padding: 10px 12px;
+  padding: 14px 16px;
   color: #fff;
+  font-size: 1.15em;
+  font-weight: bold;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.18);
 }
+
 
 .error-panel.ok {
-  background: #4ade80; /* solid green for ok */
+  background: #4ade80;
+  color: #111;
+  font-size: 1.15em;
+  font-weight: bold;
+  text-shadow: 0 1px 2px rgba(255,255,255,0.12);
 }
 
+
 .error-item {
-  background: #38bdf8; /* solid blue for info/warning */
+  background: #38bdf8;
   color: #fff;
+  font-size: 1em;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.15);
 }
 
 .error-header {
