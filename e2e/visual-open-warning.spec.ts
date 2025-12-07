@@ -16,12 +16,18 @@ test.describe('Warning Centre visual snapshot (open dialog - warning)', () => {
       await errorCloseButtons.nth(0).click();
     }
 
-    await expect(page.locator('.error-item.msg-warning')).toBeVisible();
+    await expect(popover.locator('.error-item.msg-warning')).toBeVisible();
 
-    await expect(page).toHaveScreenshot('warning-centre-open-warning.png', {
-      fullPage: true,
+    await popover.evaluate((el) => {
+      const node = el as HTMLElement;
+      node.style.width = '680px';
+      node.style.height = '244px';
+      node.style.boxSizing = 'border-box';
+      node.style.overflow = 'hidden';
+    });
+
+    await expect(popover).toHaveScreenshot('warning-centre-open-warning.png', {
       maxDiffPixelRatio: process.env.CI ? 0.02 : 0,
-      mask: [page.locator('.manual-add-panel')],
     });
   });
 });
