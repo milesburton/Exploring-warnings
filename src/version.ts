@@ -1,3 +1,3 @@
 // Auto-generated file. Do not edit.
-export const APP_VERSION = '0.0.41';
-export const APP_BUILD_DATE = '2025-12-07T19:52:00Z';
+export const APP_VERSION = '0.0.42';
+export const APP_BUILD_DATE = '2025-12-07T19:55:28Z';
