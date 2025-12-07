@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
-import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { PopoverModule } from 'primeng/popover';
 import { DropdownModule } from 'primeng/dropdown';
 import { TagModule } from 'primeng/tag';
 
@@ -14,7 +14,7 @@ import { WarningCentreComponent } from './warning-centre.component';
     CommonModule,
     FormsModule,
     ButtonModule,
-    OverlayPanelModule,
+    PopoverModule,
     DropdownModule,
     TagModule,
     WarningCentreComponent,

@@ -33,10 +33,9 @@
   ></button>
 </div>
 
-<p-overlayPanel
+<p-popover
   #panel
   [dismissable]="true"
-  [showCloseIcon]="true"
   styleClass="pok-overlay"
 >
   <ng-container *ngIf="(messages$ | async) as messages">
@@ -94,4 +93,4 @@
       </div>
     </ng-template>
   </ng-container>
-</p-overlayPanel>
+</p-popover>

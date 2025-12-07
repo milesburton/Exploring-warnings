@@ -5,7 +5,7 @@ import { Observable, map, Subject, takeUntil } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
-import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { PopoverModule } from 'primeng/popover';
 import { DropdownModule } from 'primeng/dropdown';
 import { TagModule } from 'primeng/tag';
 import { WarningsActions } from '../warnings/warnings.actions';
@@ -26,7 +26,7 @@ import {
     CommonModule,
     FormsModule,
     ButtonModule,
-    OverlayPanelModule,
+    PopoverModule,
     DropdownModule,
     TagModule
 ],
