@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { DropdownModule } from 'primeng/dropdown';
+import { TagModule } from 'primeng/tag';
 
 import { WarningCentreComponent } from './warning-centre.component';
 
@@ -15,6 +16,7 @@ import { WarningCentreComponent } from './warning-centre.component';
     ButtonModule,
     OverlayPanelModule,
     DropdownModule,
+    TagModule,
     WarningCentreComponent,
   ],
   exports: [WarningCentreComponent],
