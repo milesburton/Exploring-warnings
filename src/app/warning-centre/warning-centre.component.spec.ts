@@ -14,11 +14,17 @@ import { WarningsActions } from '../warnings/warnings.actions';
 })
 class TestWarningCentreComponent {
   messages$;
+
   counts$;
+
   borderClass$;
+
   customerTypes = [{ label: 'Trainer / Pokémon', value: 'pokemon' }];
+
   customerType = this.customerTypes[0];
+
   private store = inject(Store);
+
   constructor() {
     this.messages$ = this.store.select(selectAllMessages);
     this.counts$ = this.store.select(selectCounts);
@@ -26,9 +32,11 @@ class TestWarningCentreComponent {
       .select(selectHighestSeverity)
       .pipe(map(level => `border-${level}`));
   }
+
   onRemove(id: string): void {
     this.store.dispatch(WarningsActions.removeMessage({ id }));
   }
+
   onClearAll(event: Event): void {
     event.stopPropagation();
     this.store.dispatch(WarningsActions.clearAll());

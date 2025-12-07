@@ -1,2 +1,2 @@
-FROM mcr.microsoft.com/devcontainers/javascript-node:latest
+FROM mcr.microsoft.com/devcontainers/javascript-node:22
 RUN npm install -g @angular/cli@19

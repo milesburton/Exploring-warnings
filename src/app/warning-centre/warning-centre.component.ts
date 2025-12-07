@@ -31,14 +31,19 @@ import { WarningMessage } from '../warnings/warning-message.model';
 })
 export class WarningCentreComponent implements OnInit, OnDestroy {
   messages$: Observable<WarningMessage[]>;
+
   private autoDismissTimers: Map<string, any> = new Map();
+
   private destroy$ = new Subject<void>();
+
   private messagesSub?: any;
+
   counts$: Observable<{ error: number; warning: number; info: number; total: number }>;
 
   borderClass$: Observable<string>;
 
   customerTypes = [{ label: 'Trainer / Pokémon', value: 'pokemon' }];
+
   customerType = this.customerTypes[0];
 
 

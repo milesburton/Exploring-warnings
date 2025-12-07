@@ -1,14 +1,22 @@
 {
-  "name": "Alert UI Example (Node Latest)",
-  "image": "mcr.microsoft.com/devcontainers/javascript-node:latest",
+  "name": "Alert UI Example (Node 22)",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
   "features": {
     "ghcr.io/devcontainers/features/git:1": {}
   },
-  "mounts": ["source=${env:SSH_AUTH_SOCK},target=/ssh-agent,type=bind"],
-  "remoteEnv": {
-    "SSH_AUTH_SOCK": "/ssh-agent"
-  },
-  "postCreateCommand": "npm install -g @angular/cli@19 && npm install",
+  "mounts": [
+    {
+      "source": "${localEnv:HOME}/.ssh",
+      "target": "/home/node/.ssh",
+      "type": "bind"
+    },
+    {
+      "source": "${localEnv:HOME}/.config/github-copilot",
+      "target": "/home/node/.config/github-copilot",
+      "type": "bind"
+    }
+  ],
+  "postCreateCommand": "npm install -g @angular/cli@19 && npm install && npx playwright install",
   "forwardPorts": [4200],
   "customizations": {
     "vscode": {
@@ -16,7 +24,8 @@
         "angular.ng-template",
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
-        "streetsidesoftware.code-spell-checker"
+        "streetsidesoftware.code-spell-checker",
+        "github.vscode-github-actions"
       ]
     }
   }
