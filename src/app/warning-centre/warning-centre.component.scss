@@ -1,11 +1,6 @@
-/* Popover spacing and content reset */
-.p-popover.pok-overlay {
-  margin-top: 10px;
+/* Popover spacing and content reset (global overlay rendered at root) */
 
-  .p-popover-content {
-    padding: 0;
-  }
-}
+/* Popover overlay styles moved to global `src/styles.scss` to avoid ::ng-deep */
 
 .top-bar {
   display: flex;

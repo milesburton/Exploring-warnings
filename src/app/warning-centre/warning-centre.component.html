@@ -34,11 +34,11 @@
   ></button>
 </div>
 
-<p-popover
-  #panel
-  [dismissable]="true"
-  styleClass="pok-overlay"
->
+  <p-popover
+    #panel
+    [dismissable]="true"
+    styleClass="pok-overlay"
+  >
   <ng-container *ngIf="(messages$ | async) as messages">
     <div class="error-panel pok-panel" *ngIf="messages.length; else allGood">
       <div class="error-header pok-header">

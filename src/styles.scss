@@ -16,3 +16,12 @@ body {
   background: radial-gradient(circle at top left, #111827 0, #020617 55%, #000 100%);
   color: #e5e7eb;
 }
+
+/* PrimeNG Popover overlay: global styles (overlay renders at root) */
+.p-popover.pok-overlay {
+  transform: translateY(12px);
+}
+
+.p-popover.pok-overlay .p-popover-content {
+  padding: 0;
+}

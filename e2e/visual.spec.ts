@@ -11,10 +11,11 @@ test.describe('Warning Centre visual snapshot', () => {
     await expect(page.locator('app-warning-centre, app-warning-centre-root, app-warning-centre-component')).toBeVisible({ timeout: 3000 });
 
     // Take a screenshot of the full page for stability (soft assert to avoid failing builds)
-    await expect.soft(page).toHaveScreenshot('warning-centre.png', {
-      fullPage: true,
-      // Mask highly dynamic UI bits if needed in the future
-      // masks: [page.locator('.pok-overlay')]
-    });
+      await expect(page).toHaveScreenshot('warning-centre.png', {
+        fullPage: true,
+        maxDiffPixelRatio: 0,
+        // Mask highly dynamic UI bits if needed in the future
+        // masks: [page.locator('.pok-overlay')]
+      });
   });
 });
