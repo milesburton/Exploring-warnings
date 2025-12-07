@@ -15,7 +15,7 @@ This project demonstrates a compact Angular 19 generic alert-centre system using
 - Vite + Vitest
 - DevContainer with **Node 25**
 - GitHub Actions (Vitest → Build → Netlify deploy)
-- Netlify Hosting ([See live on Netlify](https://app.netlify.com/))
+- Netlify Hosting ([See live on Netlify](https://alert-example.netlify.app/))
 
 ## Getting Started
 
