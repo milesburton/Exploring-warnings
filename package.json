@@ -9,7 +9,7 @@
     "test": "vitest && playwright test --reporter=dot",
     "test:watch": "vitest --watch",
     "coverage": "vitest --coverage",
-    "test:ci": "vitest --run --coverage",
+    "test:ci": "vitest --coverage",
     "test:ci:all": "vitest --run && playwright test --reporter=dot",
     "test:e2e": "playwright test --reporter=dot",
     "test:e2e:report": "playwright test --reporter=html",
