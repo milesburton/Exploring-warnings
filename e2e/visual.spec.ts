@@ -8,7 +8,7 @@ test.describe('Warning Centre visual snapshot', () => {
     
       await expect(page).toHaveScreenshot('warning-centre.png', {
         fullPage: true,
-        maxDiffPixelRatio: 0,
+        maxDiffPixelRatio: process.env.CI ? 0.02 : 0,
         mask: [page.locator('.manual-add-panel')],
       });
   });

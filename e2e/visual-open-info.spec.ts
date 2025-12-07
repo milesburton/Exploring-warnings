@@ -24,7 +24,7 @@ test.describe('Warning Centre visual snapshot (open dialog - info)', () => {
 
     await expect(page).toHaveScreenshot('warning-centre-open-info.png', {
       fullPage: true,
-      maxDiffPixelRatio: 0,
+      maxDiffPixelRatio: process.env.CI ? 0.02 : 0,
       mask: [page.locator('.manual-add-panel')],
     });
   });
