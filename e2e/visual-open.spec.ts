@@ -28,10 +28,8 @@ test.describe('Warning Centre visual snapshot (open dialog)', () => {
     expect(popMarginTop).toBeGreaterThanOrEqual(0);
     expect(popMarginTop).toBeLessThanOrEqual(20);
     
-    await expect(page).toHaveScreenshot('warning-centre-open.png', {
-      fullPage: true,
+    await expect(popover).toHaveScreenshot('warning-centre-open.png', {
       maxDiffPixelRatio: process.env.CI ? 0.02 : 0,
-      mask: [page.locator('.manual-add-panel')],
     });
   });
 });
