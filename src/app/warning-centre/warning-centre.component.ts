@@ -56,6 +56,8 @@ export class WarningCentreComponent implements OnInit, OnDestroy {
 
   iconClass$: Observable<string>;
 
+  headerIconClass$: Observable<string>;
+
   customerTypes = [{ label: 'Trainer / Pokémon', value: 'pokemon' }];
 
   customerType = this.customerTypes[0];
@@ -98,6 +100,22 @@ export class WarningCentreComponent implements OnInit, OnDestroy {
           }
         })
       );
+
+    this.headerIconClass$ = this.messages$.pipe(
+      map(messages => {
+        const level = messages[0]?.level ?? 'none';
+        switch (level) {
+          case 'info':
+            return 'pi pi-info-circle';
+          case 'warning':
+            return 'pi pi-exclamation-triangle';
+          case 'error':
+            return 'pi pi-exclamation-circle';
+          default:
+            return 'pi pi-info-circle';
+        }
+      })
+    );
   }
 
   ngOnInit(): void {

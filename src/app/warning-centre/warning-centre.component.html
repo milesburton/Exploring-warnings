@@ -42,7 +42,7 @@
   <ng-container *ngIf="(messages$ | async) as messages">
     <div class="error-panel pok-panel" *ngIf="messages.length; else allGood" (mouseleave)="onPanelMouseLeave()" [ngClass]="(panelClass$ | async)!">
       <div class="error-header pok-header">
-        <i [ngClass]="(iconClass$ | async)!"></i>
+        <i [ngClass]="(headerIconClass$ | async)!"></i>
         <span class="title">
           Issues ({{ (counts$ | async)?.total ?? 0 }}) with your Pokémon query
         </span>
@@ -72,7 +72,14 @@
           (mouseleave)="onItemMouseLeave(msg.id)"
           (click)="onItemClick(msg.id)"
         >
-          <span class="error-bullet">⚠️</span>
+          <i
+            class="error-bullet"
+            [ngClass]="{
+              'pi pi-exclamation-circle': msg.level === 'error',
+              'pi pi-exclamation-triangle': msg.level === 'warning',
+              'pi pi-info-circle': msg.level === 'info'
+            }"
+          ></i>
           <div class="msg-text">{{ msg.text }}</div>
           <button
             pButton
