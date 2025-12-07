@@ -1,6 +1,3 @@
-@import "primeicons/primeicons.css";
-@import './styles/design-tokens';
-
 :root {
   --color-error: #D32F2F; /* Accessible red */
   --color-warning: #FBC02D; /* Accessible yellow */
@@ -8,11 +5,5 @@
   --color-info: #1976D2; /* Accessible blue */
   --color-text-light: #FFF; /* Light text for contrast */
   --color-text-dark: #000; /* Dark text for contrast */
-}
-
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: radial-gradient(circle at top left, #111827 0, #020617 55%, #000 100%);
-  color: #e5e7eb;
+  --color-black: #000; /* Dedicated black token */
 }
