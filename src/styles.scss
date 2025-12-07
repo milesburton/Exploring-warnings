@@ -30,7 +30,11 @@ body {
   color: var(--text-colour);
 }
 
+/* Alert overlay: fixed width + offset */
 .p-popover.pok-overlay {
+  width: 560px;
+  min-width: 560px;
+  max-width: 560px;
   transform: translateY(12px);
 }
 
