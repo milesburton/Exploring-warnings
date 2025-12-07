@@ -154,6 +154,9 @@ Design tokens are centralised CSS variables defined in `src/styles/design-tokens
 
 Light/Dark mode:
 ---
+- Theme variables are defined in `src/styles.scss` under `:root` (light) and `.theme-dark` (dark).
+- `ThemeService` initialises the theme based on OS preference, persists a manual choice, and supports Auto/Light/Dark modes.
+---
 
 ## Conventional Commits Enforcement
 
@@ -178,10 +181,5 @@ npm run test
 
 The test lives in `src/commitlint.spec.ts`.
 
----
-- Theme variables are defined in `src/styles.scss` under `:root` (light) and `.theme-dark` (dark).
-- `ThemeService` initialises the theme based on OS preference, persists a manual choice, and supports Auto/Light/Dark modes.
+## Misc
 - A debug toolbar combines version/date with a manual add form and a theme toggle; it is masked in visual tests.
-
----
-
