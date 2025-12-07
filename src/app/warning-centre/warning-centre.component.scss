@@ -97,16 +97,22 @@
   border-color: #1d4ed8;
 }
 
+
 .error-panel {
   min-width: 520px;
-  background: linear-gradient(180deg, #f87171 0%, #fbbf24 100%);
+  background: #f87171; /* solid red for errors */
   border-radius: 10px;
   padding: 10px 12px;
   color: #fff;
 }
 
 .error-panel.ok {
-  background: linear-gradient(180deg, #4ade80 0%, #38bdf8 100%);
+  background: #4ade80; /* solid green for ok */
+}
+
+.error-item {
+  background: #38bdf8; /* solid blue for info/warning */
+  color: #fff;
 }
 
 .error-header {
