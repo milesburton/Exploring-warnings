@@ -28,9 +28,12 @@ test.describe('Warning Centre visual snapshot (open dialog)', () => {
     expect(popMarginTop).toBeGreaterThanOrEqual(0);
     expect(popMarginTop).toBeLessThanOrEqual(20);
     
-    // Normalize popover width for deterministic element snapshot on CI
+    // Normalize popover size for deterministic element snapshot on CI
     await popover.evaluate((el) => {
-      (el as HTMLElement).style.width = '680px';
+      const node = el as HTMLElement;
+      node.style.width = '680px';
+      node.style.height = '244px';
+      node.style.boxSizing = 'border-box';
     });
 
     await expect(popover).toHaveScreenshot('warning-centre-open.png', {
