@@ -26,8 +26,6 @@ npm start
 
 Visit: http://localhost:4200
 
-Deployed via Netlify for instant preview and CI/CD.
-
 ## Run Tests
 
 ```bash
