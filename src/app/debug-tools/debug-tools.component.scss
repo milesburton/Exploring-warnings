@@ -1,9 +1,14 @@
 .debug-tools {
-  margin-top: 1rem;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
   padding: 0.75rem 1rem;
   border-top: 1px solid var(--surface-border, #dfe3e8);
   background: var(--surface-ground, #f8f9fa);
   color: var(--text-color, #2b2d31);
+  box-shadow: 0 -4px 12px rgb(0 0 0 / 8%);
+  z-index: 1000;
 
   .manual-add {
     display: flex;

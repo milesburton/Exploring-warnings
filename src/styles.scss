@@ -38,3 +38,14 @@ body {
 .p-popover.pok-overlay .p-popover-content {
   padding: 0;
 }
+
+/* Improve tooltip readability: solid background and spacing */
+.p-tooltip {
+  .p-tooltip-text {
+    background: var(--surface-border);
+    color: var(--text-color);
+    padding: 0.4rem 0.6rem;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgb(0 0 0 / 12%);
+  }
+}

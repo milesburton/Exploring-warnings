@@ -30,7 +30,7 @@ export class DebugToolsComponent {
   private theme = inject(ThemeService);
 
   get themeLabel() {
-    return this.theme.current;
+    return this.theme.currentMode;
   }
 
   toggleTheme() {
