@@ -1,4 +1,4 @@
-/// <reference types="vitest/globals" />
+ 
 import { inject, Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { Store } from '@ngrx/store';
@@ -7,8 +7,6 @@ import { vi } from 'vitest';
 import { selectAllMessages, selectCounts, selectHighestSeverity } from '../warnings/warnings.selectors';
 import { WarningsActions } from '../warnings/warnings.actions';
 
-
-// Minimal test-only version of the component with inline template and no styles
 @Component({
   selector: 'app-warning-centre',
   template: '<div></div>',
