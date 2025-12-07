@@ -55,8 +55,8 @@
   height: 32px;
   padding: 0;
   border-radius: 8px;
-  background: var(--bg-deep-3);
-  border: 2px solid transparent;
+  background: var(--surface-ground);
+  border: 2px solid var(--surface-border);
   transition: border-color 200ms ease, box-shadow 200ms ease, background-color 200ms ease;
 
   .pi {
