@@ -18,6 +18,8 @@ jobs:
 
       - run: npm ci
       - run: npm test -- --run
+      - name: Run Playwright E2E tests and generate report
+        run: npm run test:e2e:report
       - run: npm run build -- --configuration production
 
       - run: npx netlify deploy --prod --dir=dist/alert-ui-example/browser
