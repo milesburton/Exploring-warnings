@@ -18,7 +18,7 @@ class TestWarningCentreComponent {
   messages$;
   counts$;
   borderClass$;
-  customerTypes = [{ label: 'Customer / SDS', value: 'sds' }];
+  customerTypes = [{ label: 'Trainer / Pokémon', value: 'pokemon' }];
   customerType = this.customerTypes[0];
   private store = inject(Store);
   constructor() {
