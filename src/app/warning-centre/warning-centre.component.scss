@@ -5,8 +5,8 @@
   gap: 8px;
   padding: 6px 10px;
   border-radius: 10px;
-  background: var(--bg-deep-2);
-  border: 1px solid var(--bg-deep-3);
+  background: var(--surface-ground);
+  border: 1px solid var(--surface-border);
 
 .alert-label-input,
 .top-select-input {
@@ -44,6 +44,9 @@
 .top-calc-btn.p-button {
   border-radius: 8px;
   padding: 6px 12px;
+  background: var(--color-success);
+  border-color: var(--color-success);
+  color: var(--text-color);
 }
 }
 
@@ -95,8 +98,8 @@
 }
 
 .top-calc-btn {
-  background: var(--primary-500);
-  border-color: var(--primary-700);
+  background: var(--color-success);
+  border-color: var(--color-success);
   font-size: 13px;
   padding-inline: 14px;
 }
