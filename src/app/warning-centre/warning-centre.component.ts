@@ -7,13 +7,14 @@ import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { DropdownModule } from 'primeng/dropdown';
+import { TagModule } from 'primeng/tag';
 import { WarningsActions } from '../warnings/warnings.actions';
+import { WarningMessage } from '../warnings/warning-message.model';
 import {
   selectAllMessages,
   selectCounts,
   selectHighestSeverity,
 } from '../warnings/warnings.selectors';
-import { WarningMessage } from '../warnings/warning-message.model';
 
 @Component({
   selector: 'app-warning-centre',
@@ -27,7 +28,8 @@ import { WarningMessage } from '../warnings/warning-message.model';
     ButtonModule,
     OverlayPanelModule,
     DropdownModule,
-  ],
+    TagModule
+],
 })
 export class WarningCentreComponent implements OnInit, OnDestroy {
   messages$: Observable<WarningMessage[]>;
