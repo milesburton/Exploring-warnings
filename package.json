@@ -1,6 +1,6 @@
 {
   "name": "alert-ui-example",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "scripts": {
     "ng": "ng",
@@ -14,7 +14,8 @@
     "test:e2e": "playwright test --reporter=dot",
     "test:e2e:report": "playwright test --reporter=html",
     "lint": "eslint src --ext .ts",
-    "lint:fix": "eslint src --ext .ts --fix"
+    "lint:fix": "eslint src --ext .ts --fix",
+    "bump:version": "npm version patch --no-git-tag-version && node scripts/write-version.mjs"
   },
   "dependencies": {
     "@angular/animations": "^19.0.0",
@@ -71,7 +72,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "npm run bump:version && git add package.json src/version.ts && lint-staged"
     }
   }
 }
