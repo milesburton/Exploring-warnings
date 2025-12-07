@@ -3,7 +3,9 @@ import { test, expect } from '@playwright/test';
 test.describe('Warning Centre visual snapshot (open dialog - warning)', () => {
   test('renders warning severity', async ({ page }) => {
     await page.goto('http://localhost:4200/');
+    await page.waitForLoadState('networkidle');
     await page.locator('.alert-icon-btn').click();
+    await page.waitForLoadState('networkidle');
 
     const popover = page.locator('.p-popover.pok-overlay');
     await expect(popover).toBeVisible();
