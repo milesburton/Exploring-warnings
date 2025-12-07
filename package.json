@@ -61,6 +61,7 @@
   },
   "lint-staged": {
     "src/**/*.{ts,html}": [
+      "eslint --fix --no-warn-ignored",
       "eslint --max-warnings=0 --no-warn-ignored"
     ],
     "src/**/*.scss": [
