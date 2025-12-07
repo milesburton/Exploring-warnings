@@ -1,5 +1,4 @@
 <div class="top-bar">
-  <!-- ICON BUTTON -->
   <button
     pButton
     type="button"
@@ -7,9 +6,9 @@
     [ngClass]="(borderClass$ | async)!"
     icon="pi pi-exclamation-triangle"
     (click)="panel.toggle($event)"
+    aria-label="Open Pokémon issues"
   ></button>
 
-  <!-- TEXT INPUT -->
   <button
     pButton
     type="button"
@@ -23,24 +22,29 @@
     [(ngModel)]="customerType"
     optionLabel="label"
     styleClass="top-select-inner"
+    aria-label="Pokémon context"
   ></p-dropdown>
 
-  <p-tag
-    value="Catch Pokémon"
-    severity="info"
-    rounded
-    class="top-calc-btn"
-  ></p-tag>
+  <button
+    pButton
+    type="button"
+    label="Catch Pokémon"
+    class="top-calc-btn p-button-sm"
+  ></button>
 </div>
 
-
-<p-overlayPanel #panel [dismissable]="true" [showCloseIcon]="true" styleClass="bank-overlay">
+<p-overlayPanel
+  #panel
+  [dismissable]="true"
+  [showCloseIcon]="true"
+  styleClass="pok-overlay"
+>
   <ng-container *ngIf="(messages$ | async) as messages">
-    <div class="error-panel bank-panel" *ngIf="messages.length; else allGood">
-      <div class="error-header bank-header">
+    <div class="error-panel pok-panel" *ngIf="messages.length; else allGood">
+      <div class="error-header pok-header">
         <i class="pi pi-exclamation-circle"></i>
         <span class="title">
-          Errors ({{ (counts$ | async)?.error ?? 0 }}) require your attention
+          Issues ({{ (counts$ | async)?.error ?? 0 }}) with your Pokémon query
         </span>
         <a class="clear" (click)="onClearAll($event)">
           Clear all
@@ -52,12 +56,20 @@
         <div
           *ngFor="let msg of messages; let i = index"
           class="error-item"
-          [ngClass]="{ main: i === 0, 'real-estate': msg.type === 'real-estate', 'utility': msg.type === 'utility' }"
+          [ngClass]="{
+            main: i === 0,
+            'real-estate': msg.type === 'real-estate',
+            utility: msg.type === 'utility'
+          }"
         >
-          <span class="error-bullet" [ngClass]="{
-            'bullet-gold': msg.type === 'real-estate',
-            'bullet-blue': msg.type === 'utility'
-          }">!</span>
+          <span
+            class="error-bullet"
+            [ngClass]="{
+              'bullet-gold': msg.type === 'real-estate',
+              'bullet-blue': msg.type === 'utility'
+            }"
+            >!</span
+          >
           <div class="msg-text">{{ msg.text }}</div>
           <button
             pButton
@@ -65,6 +77,7 @@
             icon="pi pi-times"
             class="close-btn p-button-rounded p-button-text"
             (click)="onRemove(msg.id)"
+            aria-label="Dismiss message"
           >
             <span class="shortcut-hint" title="Disabled">Esc</span>
           </button>
@@ -73,10 +86,10 @@
     </div>
 
     <ng-template #allGood>
-      <div class="error-panel ok bank-panel">
-        <div class="error-header bank-header">
+      <div class="error-panel ok pok-panel">
+        <div class="error-header pok-header">
           <i class="pi pi-check-circle"></i>
-          <span class="title">All good no validation messages</span>
+          <span class="title">All good — no issues with your Pokémon query</span>
         </div>
       </div>
     </ng-template>

@@ -5,3 +5,7 @@ dist/
 .idea/
 coverage/
 .DS_Store
+
+# Playwright ephemeral outputs (keep visual baselines committed)
+test-results/
+playwright-report/

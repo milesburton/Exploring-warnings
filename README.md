@@ -35,6 +35,26 @@ Visit: http://localhost:4200
 npm test
 ```
 
+### E2E and Visual Snapshots (Playwright)
+
+- Run all E2E tests:
+
+```bash
+npm run test:e2e
+```
+
+- Update the visual baseline for the Warning Centre snapshot:
+
+```bash
+npm run test:e2e -- --update-snapshots -g "Warning Centre visual snapshot"
+```
+
+Notes:
+- Playwright config uses `webServer`, so it will start the dev server and wait for port readiness automatically.
+- The visual snapshot test lives in `e2e/visual.spec.ts` and uses `expect(page).toHaveScreenshot('warning-centre.png', { fullPage: true })`.
+- Baselines are stored next to the spec under a `*-snapshots/` folder; subsequent runs compare against the baseline and fail on diffs.
+ - Snapshot assertion uses a soft check: `expect.soft(page).toHaveScreenshot(...)` so visual diffs warn but do not fail CI. Switch to a hard assertion if strict enforcement is required.
+
 ## Build
 
 ```bash
@@ -48,6 +68,10 @@ Build output: `dist/alert-ui-example/browser`
 
 - Uses Node 22: `mcr.microsoft.com/devcontainers/javascript-node:22`
 - Pre-installs Angular CLI 19, ESLint, Prettier, spell checker
+
+### Playwright Dependencies
+
+The dev container Dockerfile installs system libraries required for headless Chromium (NSS/NSPR, DBus, GTK/ATK, GBM, ALSA, X11 helpers) to ensure Playwright E2E runs reliably.
 
 
 ## GitHub Actions
@@ -84,6 +108,10 @@ Build output: `dist/alert-ui-example/browser`
 ## UI
 
 - Pokémon-themed background and mock data
+
+### Design Tokens
+
+Design tokens are centralized CSS variables defined in `src/styles/design-tokens.scss` for colors, backgrounds, borders, text, and shadows. Component SCSS references these tokens to keep styles consistent and accessible.
 
 ---
 

@@ -11,7 +11,7 @@ test.describe('Warning Centre UI', () => {
 
     // Open the warning centre overlay
     await page.locator('.alert-icon-btn').click();
-    const overlay = page.locator('.bank-overlay');
+    const overlay = page.locator('.pok-overlay');
     await expect(overlay).toBeVisible();
 
     // Check all seeded warnings are present (Pokémon mock data)
@@ -39,7 +39,7 @@ test.describe('Warning Centre UI', () => {
     await page.goto('http://localhost:4200');
     // Open overlay
     await page.locator('.alert-icon-btn').click();
-    const overlay = page.locator('.bank-overlay');
+    const overlay = page.locator('.pok-overlay');
     await expect(overlay).toBeVisible();
 
     // Try to remove a warning that doesn't exist (simulate by running JS in browser context)
@@ -54,7 +54,7 @@ test.describe('Warning Centre UI', () => {
     await page.goto('http://localhost:4200');
     // Open overlay
     await page.locator('.alert-icon-btn').click();
-    const overlay = page.locator('.bank-overlay');
+    const overlay = page.locator('.pok-overlay');
     await expect(overlay).toBeVisible();
 
     // Clear all warnings
