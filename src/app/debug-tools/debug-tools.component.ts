@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { ButtonModule } from 'primeng/button';
 import { APP_VERSION, APP_BUILD_DATE } from '../../version';
 import { WarningsActions } from '../warnings/warnings.actions';
+import { ThemeService } from '../theme/theme.service';
 
 @Component({
   selector: 'app-debug-tools',
@@ -25,6 +26,16 @@ export class DebugToolsComponent {
   newMessageLevel: 'error' | 'warning' | 'info' = 'info';
 
   private store = inject(Store);
+
+  private theme = inject(ThemeService);
+
+  get themeLabel() {
+    return this.theme.current;
+  }
+
+  toggleTheme() {
+    this.theme.toggle();
+  }
 
   addManualMessage() {
     const text = this.newMessageText?.trim();
