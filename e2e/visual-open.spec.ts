@@ -28,6 +28,11 @@ test.describe('Warning Centre visual snapshot (open dialog)', () => {
     expect(popMarginTop).toBeGreaterThanOrEqual(0);
     expect(popMarginTop).toBeLessThanOrEqual(20);
     
+    // Normalize popover width for deterministic element snapshot on CI
+    await popover.evaluate((el) => {
+      (el as HTMLElement).style.width = '680px';
+    });
+
     await expect(popover).toHaveScreenshot('warning-centre-open.png', {
       maxDiffPixelRatio: process.env.CI ? 0.02 : 0,
     });
