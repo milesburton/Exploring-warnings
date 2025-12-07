@@ -8,15 +8,29 @@
     (click)="panel.toggle($event)"
     aria-label="Open Pokémon issues"
   ></button>
-  
+  <input
+    type="text"
+    class="alert-label-input p-inputtext"
+    placeholder="Pokémon query"
+    aria-label="Pokémon query"
+  />
+
   <div class="search-input">
+    <input
+      type="text"
+      class="top-select-input p-inputtext"
+      placeholder="Trainer / Pokémon"
+      aria-label="Trainer / Pokémon search"
+    />
+    <i class="pi pi-search search-icon" aria-hidden="true"></i>
+  </div>
+
   <button
     pButton
     type="button"
     label="Catch Pokémon"
     class="top-calc-btn p-button-sm p-button-rounded"
   ></button>
-</div>
 
   <p-popover
     #panel
