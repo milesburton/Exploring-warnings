@@ -36,6 +36,8 @@ test.describe('Warning Centre visual snapshot (open dialog)', () => {
     await expect(page).toHaveScreenshot('warning-centre-open.png', {
       fullPage: true,
       maxDiffPixelRatio: 0,
+      // Exclude manual test panel from visual diffs
+      mask: [page.locator('.manual-add-panel')],
     });
   });
 });

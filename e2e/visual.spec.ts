@@ -14,8 +14,8 @@ test.describe('Warning Centre visual snapshot', () => {
       await expect(page).toHaveScreenshot('warning-centre.png', {
         fullPage: true,
         maxDiffPixelRatio: 0,
-        // Mask highly dynamic UI bits if needed in the future
-        // masks: [page.locator('.pok-overlay')]
+        // Mask manual test panel to avoid visual diffs
+        mask: [page.locator('.manual-add-panel')],
       });
   });
 });

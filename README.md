@@ -49,6 +49,40 @@ npm run test:e2e
 npm run test:e2e -- --update-snapshots -g "Warning Centre visual snapshot"
 ```
 
+## Visual Snapshot Testing
+
+This project uses Playwright for visual regression checks. Snapshots are stored under `e2e/*.spec.ts-snapshots/` and compared on each run.
+
+- Run all e2e tests: `npx playwright test`
+- View report: `npx playwright show-report`
+- Baselines are OS-specific (e.g., `*-linux.png`). CI enforces strict diffs.
+
+### Updating Snapshots
+
+When the UI intentionally changes, update the baseline snapshots:
+
+- Update changed/missing snapshots for all tests:
+
+```bash
+npx playwright test --update-snapshots=changed
+```
+
+- Update snapshots for a specific spec only:
+
+```bash
+npx playwright test --update-snapshots=changed e2e/visual-open.spec.ts
+```
+
+- Regenerate all snapshots (use sparingly):
+
+```bash
+npx playwright test --update-snapshots=all
+```
+
+Tips:
+- Run unit tests first to ensure build stability: `npm test`
+- If a test fails with a diff, inspect `test-results/.../*-diff.png` before updating.
+
 Notes:
 - Playwright config uses `webServer`, so it will start the dev server and wait for port readiness automatically.
 - The visual snapshot test lives in `e2e/visual.spec.ts` and uses `expect(page).toHaveScreenshot('warning-centre.png', { fullPage: true })`.

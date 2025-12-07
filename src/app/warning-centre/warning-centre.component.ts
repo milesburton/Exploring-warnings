@@ -8,6 +8,7 @@ import { ButtonModule } from 'primeng/button';
 import { PopoverModule } from 'primeng/popover';
 import { DropdownModule } from 'primeng/dropdown';
 import { TagModule } from 'primeng/tag';
+import { TooltipModule } from 'primeng/tooltip';
 import { WarningsActions } from '../warnings/warnings.actions';
 import { WarningMessage } from '../warnings/warning-message.model';
 import {
@@ -28,7 +29,8 @@ import {
     ButtonModule,
     PopoverModule,
     DropdownModule,
-    TagModule
+    TagModule,
+    TooltipModule
 ],
 })
 export class WarningCentreComponent implements OnInit, OnDestroy {
@@ -51,6 +53,13 @@ export class WarningCentreComponent implements OnInit, OnDestroy {
   customerTypes = [{ label: 'Trainer / Pokémon', value: 'pokemon' }];
 
   customerType = this.customerTypes[0];
+
+  // Manual test panel state (excluded from visual tests)
+  newMessageText = '';
+
+  newMessageLevel: WarningMessage['level'] = 'error';
+
+  levels: WarningMessage['level'][] = ['error', 'warning', 'info'];
 
   private store = inject(Store);
 
@@ -84,7 +93,7 @@ export class WarningCentreComponent implements OnInit, OnDestroy {
                 this.fadingIds.delete(msg.id);
                 this.autoDismissTimers.delete(msg.id);
               }, 200);
-            }, 5000);
+            }, 15000);
             this.autoDismissTimers.set(msg.id, timer);
           }
         });
@@ -137,5 +146,16 @@ export class WarningCentreComponent implements OnInit, OnDestroy {
 
   isFading(id: string): boolean {
     return this.fadingIds.has(id);
+  }
+
+  addManualMessage(): void {
+    const text = (this.newMessageText || '').trim();
+    if (!text) return;
+    const id = `manual-${Date.now()}`;
+    const level = this.newMessageLevel;
+    this.store.dispatch(
+      WarningsActions.addMessage({ message: { id, level, text, autoDismiss: false } })
+    );
+    this.newMessageText = '';
   }
 }

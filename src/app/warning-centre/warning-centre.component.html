@@ -46,9 +46,14 @@
         <span class="title">
           Issues ({{ (counts$ | async)?.error ?? 0 }}) with your Pokémon query
         </span>
-        <a class="clear" (click)="onClearAll($event)">
+        <a
+          class="clear"
+          (click)="onClearAll($event)"
+          pTooltip="Clear all (Ctrl+k)"
+          tooltipPosition="bottom"
+          aria-label="Clear all (Ctrl+k)"
+        >
           Clear all
-          <span class="shortcut-hint" title="Disabled">Ctrl+K</span>
         </a>
       </div>
 
@@ -58,22 +63,16 @@
           class="error-item"
           [ngClass]="{
             main: i === 0,
-            'real-estate': msg.type === 'real-estate',
-            utility: msg.type === 'utility',
+            'msg-error': msg.level === 'error',
+            'msg-warning': msg.level === 'warning',
+            'msg-info': msg.level === 'info',
             fading: isFading(msg.id)
           }"
           (mouseenter)="onItemMouseEnter(msg.id)"
           (mouseleave)="onItemMouseLeave(msg.id)"
           (click)="onItemClick(msg.id)"
         >
-          <span
-            class="error-bullet"
-            [ngClass]="{
-              'bullet-gold': msg.type === 'real-estate',
-              'bullet-blue': msg.type === 'utility'
-            }"
-            >⚠️</span
-          >
+          <span class="error-bullet">⚠️</span>
           <div class="msg-text">{{ msg.text }}</div>
           <button
             pButton
@@ -82,9 +81,9 @@
             class="close-btn p-button-rounded p-button-text"
             (click)="onRemove(msg.id)"
             aria-label="Dismiss message"
-          >
-            <span class="shortcut-hint" title="Disabled">Esc</span>
-          </button>
+            pTooltip="Dismiss (Esc)"
+            tooltipPosition="bottom"
+          ></button>
         </div>
       </div>
     </div>
@@ -99,3 +98,31 @@
     </ng-template>
   </ng-container>
 </p-popover>
+
+<div class="manual-add-panel" aria-label="Manual message panel" data-visual-mask>
+  <div class="panel-inner">
+    <input
+      type="text"
+      class="p-inputtext"
+      [(ngModel)]="newMessageText"
+      placeholder="Enter message text"
+      aria-label="Manual message text"
+    />
+    <select
+      class="p-inputtext"
+      [(ngModel)]="newMessageLevel"
+      aria-label="Manual message level"
+    >
+      <option *ngFor="let lvl of levels" [value]="lvl">{{ lvl }}</option>
+    </select>
+    <button
+      pButton
+      type="button"
+      label="Add"
+      class="p-button-sm"
+      (click)="addManualMessage()"
+      pTooltip="Add message"
+      tooltipPosition="top"
+    ></button>
+  </div>
+</div>

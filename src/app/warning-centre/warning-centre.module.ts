@@ -5,6 +5,7 @@ import { ButtonModule } from 'primeng/button';
 import { PopoverModule } from 'primeng/popover';
 import { DropdownModule } from 'primeng/dropdown';
 import { TagModule } from 'primeng/tag';
+import { TooltipModule } from 'primeng/tooltip';
 
 import { WarningCentreComponent } from './warning-centre.component';
 
@@ -17,6 +18,7 @@ import { WarningCentreComponent } from './warning-centre.component';
     PopoverModule,
     DropdownModule,
     TagModule,
+    TooltipModule,
     WarningCentreComponent,
   ],
   exports: [WarningCentreComponent],
