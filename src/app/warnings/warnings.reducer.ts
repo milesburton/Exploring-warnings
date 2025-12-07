@@ -10,28 +10,28 @@ export const warningsFeatureKey = 'warnings';
 
 const seededMessages: WarningMessage[] = [
   {
-    id: 'customer-not-found',
+    id: 'pikachu-missing',
     level: 'error',
     text:
-      'User profile could not be loaded. Please check your connection or try again later.',
+      'Pikachu is missing from the Pokédex. Please check your connection to Professor Oak.',
     autoDismiss: false,
   },
   {
-    id: 'notional-too-low',
+    id: 'charmander-training',
     level: 'error',
-    text: 'Notional Amount too low.',
+    text: 'Charmander needs more training.',
     autoDismiss: true,
   },
   {
-    id: 'kyc-warning',
+    id: 'bulbasaur-registration',
     level: 'warning',
-    text: 'KYC documents are incomplete.',
+    text: 'Bulbasaur has not completed gym registration.',
     autoDismiss: true,
   },
   {
-    id: 'info-market-open',
+    id: 'league-open',
     level: 'info',
-    text: 'Market is now open.',
+    text: 'The Pokémon League is now open.',
     autoDismiss: true,
   },
 ];
