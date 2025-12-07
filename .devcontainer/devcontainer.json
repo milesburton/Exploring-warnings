@@ -1,6 +1,6 @@
 {
   "name": "Alert UI Example (Node Latest)",
-  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:latest",
   "features": {
     "ghcr.io/devcontainers/features/git:1": {}
   },
