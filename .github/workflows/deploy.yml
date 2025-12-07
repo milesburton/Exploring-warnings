@@ -31,7 +31,18 @@ jobs:
           path: playwright-report
       - run: npm run build -- --configuration production
 
-      - run: npx netlify deploy --prod --dir=dist/alert-ui-example/browser
+      - name: Verify Netlify secrets
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: |
+          if [ -z "$NETLIFY_AUTH_TOKEN" ] || [ -z "$NETLIFY_SITE_ID" ]; then
+            echo "Netlify secrets not configured. Please set NETLIFY_AUTH_TOKEN and NETLIFY_SITE_ID in repository secrets.";
+            exit 1;
+          fi
+
+      - name: Deploy to Netlify
+        run: npx netlify deploy --prod --dir=dist/alert-ui-example/browser --auth "$NETLIFY_AUTH_TOKEN" --site "$NETLIFY_SITE_ID"
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
