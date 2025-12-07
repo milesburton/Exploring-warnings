@@ -13,6 +13,7 @@ test.describe('Warning Centre visual snapshot', () => {
         mask: [
           page.locator('.manual-add-panel'),
           page.locator('.app-footer'),
+          page.locator('app-debug-tools'),
         ],
       });
   });

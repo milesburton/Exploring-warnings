@@ -1,0 +1,27 @@
+.debug-tools {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--surface-border, #dfe3e8);
+  background: var(--surface-ground, #f8f9fa);
+  color: var(--text-color, #2b2d31);
+
+  .manual-add {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .build-footer {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 0.85rem;
+    color: var(--text-color-secondary, #5f6368);
+
+    .footer-inner {
+      display: inline-flex;
+      gap: 0.35rem;
+      align-items: center;
+    }
+  }
+}

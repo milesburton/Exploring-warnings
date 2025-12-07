@@ -1,0 +1,35 @@
+<div class="debug-tools" aria-label="Debug tools" data-visual-mask>
+  <div class="manual-add">
+    <input
+      type="text"
+      class="p-inputtext"
+      [(ngModel)]="newMessageText"
+      placeholder="Enter message text"
+      aria-label="Manual message text"
+    />
+    <select
+      class="p-inputtext"
+      [(ngModel)]="newMessageLevel"
+      aria-label="Manual message level"
+    >
+      <option *ngFor="let lvl of levels" [value]="lvl">{{ lvl }}</option>
+    </select>
+    <button
+      pButton
+      type="button"
+      label="Add"
+      class="p-button-sm"
+      (click)="addManualMessage()"
+      pTooltip="Add message"
+      tooltipPosition="top"
+    ></button>
+  </div>
+
+  <footer class="build-footer" aria-label="Build info">
+    <div class="footer-inner">
+      <span class="version">v{{ version }}</span>
+      <span class="dot">•</span>
+      <span class="date">{{ buildDate | date:'medium' }}</span>
+    </div>
+  </footer>
+</div>

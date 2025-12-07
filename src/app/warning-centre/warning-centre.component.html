@@ -99,30 +99,4 @@
   </ng-container>
 </p-popover>
 
-<div class="manual-add-panel" aria-label="Manual message panel" data-visual-mask>
-  <div class="panel-inner">
-    <input
-      type="text"
-      class="p-inputtext"
-      [(ngModel)]="newMessageText"
-      placeholder="Enter message text"
-      aria-label="Manual message text"
-    />
-    <select
-      class="p-inputtext"
-      [(ngModel)]="newMessageLevel"
-      aria-label="Manual message level"
-    >
-      <option *ngFor="let lvl of levels" [value]="lvl">{{ lvl }}</option>
-    </select>
-    <button
-      pButton
-      type="button"
-      label="Add"
-      class="p-button-sm"
-      (click)="addManualMessage()"
-      pTooltip="Add message"
-      tooltipPosition="top"
-    ></button>
-  </div>
-</div>
+<!-- Manual add panel moved to app-debug-tools component -->

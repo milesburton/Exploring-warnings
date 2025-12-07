@@ -30,6 +30,7 @@ test.describe('Warning Centre visual snapshot (open dialog - info)', () => {
       mask: [
         page.locator('.manual-add-panel'),
         page.locator('.app-footer'),
+        page.locator('app-debug-tools'),
       ],
     });
   });
