@@ -195,17 +195,17 @@
 
 .error-item.msg-error {
   border-left: 4px solid var(--color-error);
-  background: linear-gradient(90deg, var(--bg-chip) 0%, rgb(211 47 47 / 22%) 100%);
+  background: #000;
 }
 
 .error-item.msg-warning {
   border-left: 4px solid var(--color-warning);
-  background: linear-gradient(90deg, var(--bg-chip) 0%, rgb(251 192 45 / 22%) 100%);
+  background: #000;
 }
 
 .error-item.msg-info {
   border-left: 4px solid var(--color-info);
-  background: linear-gradient(90deg, var(--bg-chip) 0%, rgb(25 118 210 / 22%) 100%);
+  background: #000;
 }
 
 .error-item.fading {
