@@ -1,21 +1,24 @@
 
 
-# Alert Centre Demo (Angular 19 + Vite + Node 25)
+
+# Alert Centre Demo (Angular 19 + Vite + Node 20/25)
 
 ![Coverage 100%](https://img.shields.io/badge/coverage-100%25-brightgreen)
 ![Lint Passing](https://img.shields.io/badge/lint-passing-brightgreen)
 ![E2E Passing](https://img.shields.io/badge/e2e-passing-brightgreen)
 
 
-This project demonstrates a compact Angular 19 generic alert-centre system using:
+
+This project demonstrates a compact Angular 19 generic alert-centre system with Pokémon-themed mock data:
 
 - Angular 19
 - NgRx 19
 - PrimeNG
 - Vite + Vitest
-- DevContainer with **Node 25**
-- GitHub Actions (Vitest → Build → Netlify deploy)
-- Netlify Hosting ([See live on Netlify](https://alert-example.netlify.app/))
+- Playwright E2E
+- DevContainer (Node 20, see `.devcontainer/devcontainer.json`)
+- GitHub Actions (CI: lint, unit, E2E, build, Netlify deploy)
+- Netlify Hosting ([Live Demo](https://alert-example.netlify.app/))
 
 ## Getting Started
 
@@ -40,58 +43,48 @@ npm run build
 
 Build output: `dist/alert-ui-example/browser`
 
+
 ## Dev Container
 
-Uses Node 25 via:
+- Uses Node 20: `mcr.microsoft.com/devcontainers/javascript-node:20`
+- Pre-installs Angular CLI 19, ESLint, Prettier, spell checker
 
-```
-mcr.microsoft.com/devcontainers/javascript-node:25
-```
 
 ## GitHub Actions
 
-Runs:
-1. npm ci
-2. npm test (Vitest)
-3. npm run build
-4. Deploys to Netlify
+- Node 25 for CI
+- Steps: checkout, setup node, install, lint, unit test, E2E, build, Netlify deploy
 
-## End-to-End (E2E) Testing
 
-This project uses [Playwright](https://playwright.dev/) for headless E2E browser testing.
+## Testing & Linting
 
-### Run E2E Tests
-
-Start the dev server in one terminal:
-
-```bash
-npm start
-```
-
-Then, in another terminal, run:
-
-```bash
-npm run test:e2e
-```
-
-This will run all Playwright tests in `e2e/` headlessly against `http://localhost:4200`.
-
-### Add a New E2E Test
-
-Create a new file in `e2e/` (e.g. `e2e/your-feature.spec.ts`) and use the Playwright test API.
+- Unit: `npm test` (Vitest)
+- E2E: `npm run test:e2e` (Playwright)
+- Coverage: `npm run coverage`
+- Lint: `npm run lint`
+- Pre-commit: `lint-staged` via Husky
+- Pre-push: All tests and lint must pass
 
 ---
 
-## Linting & Pre-commit
 
-- ESLint is configured for Angular, TypeScript, and import order.
-- Pre-commit hook (Husky + lint-staged) blocks commits with lint errors.
+## Formatting & Linting
 
-Run lint manually:
+- ESLint config: `.eslintrc.js`, `eslint.config.js`
+- Prettier: VS Code extension recommended
+- All HTML files ignored by ESLint
 
-```bash
-npx eslint src --ext .ts
-```
+## Netlify
+
+- Deploys from `main` branch
+- Build command: `npm run build`
+- Publish directory: `dist/alert-ui-example/browser`
+- SPA routing via `netlify.toml`
+
+## UI
+
+- Pokémon-themed background and mock data
+- PrimeNG components for UI primitives
 
 ---
 
