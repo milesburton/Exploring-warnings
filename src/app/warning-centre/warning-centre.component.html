@@ -59,8 +59,12 @@
           [ngClass]="{
             main: i === 0,
             'real-estate': msg.type === 'real-estate',
-            utility: msg.type === 'utility'
+            utility: msg.type === 'utility',
+            fading: isFading(msg.id)
           }"
+          (mouseenter)="onItemMouseEnter(msg.id)"
+          (mouseleave)="onItemMouseLeave(msg.id)"
+          (click)="onItemClick(msg.id)"
         >
           <span
             class="error-bullet"

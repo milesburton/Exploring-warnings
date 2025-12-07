@@ -35,6 +35,8 @@ export class WarningCentreComponent implements OnInit, OnDestroy {
   messages$: Observable<WarningMessage[]>;
 
   private autoDismissTimers: Map<string, any> = new Map();
+  private protectedIds: Set<string> = new Set();
+  private fadingIds: Set<string> = new Set();
 
   private destroy$ = new Subject<void>();
 
@@ -66,10 +68,22 @@ export class WarningCentreComponent implements OnInit, OnDestroy {
       .subscribe(messages => {
 
         messages.forEach(msg => {
-          if (msg.autoDismiss && !this.autoDismissTimers.has(msg.id)) {
+          if (
+            msg.autoDismiss &&
+            !this.autoDismissTimers.has(msg.id) &&
+            !this.protectedIds.has(msg.id)
+          ) {
             const timer = setTimeout(() => {
-              this.onRemove(msg.id);
-              this.autoDismissTimers.delete(msg.id);
+              if (this.protectedIds.has(msg.id)) {
+                this.autoDismissTimers.delete(msg.id);
+                return;
+              }
+              this.fadingIds.add(msg.id);
+              setTimeout(() => {
+                this.onRemove(msg.id);
+                this.fadingIds.delete(msg.id);
+                this.autoDismissTimers.delete(msg.id);
+              }, 200);
             }, 5000);
             this.autoDismissTimers.set(msg.id, timer);
           }
@@ -102,5 +116,25 @@ export class WarningCentreComponent implements OnInit, OnDestroy {
   onClearAll(event: Event): void {
     event.stopPropagation();
     this.store.dispatch(WarningsActions.clearAll());
+  }
+  onItemMouseEnter(id: string): void {
+    const t = this.autoDismissTimers.get(id);
+    if (t) {
+      clearTimeout(t);
+      this.autoDismissTimers.delete(id);
+    }
+    this.protectedIds.add(id);
+  }
+
+  onItemMouseLeave(id: string): void {
+    // Do not reschedule auto-dismiss automatically; user interacted.
+  }
+
+  onItemClick(id: string): void {
+    this.protectedIds.add(id);
+  }
+
+  isFading(id: string): boolean {
+    return this.fadingIds.has(id);
   }
 }
