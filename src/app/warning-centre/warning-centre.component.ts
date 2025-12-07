@@ -38,7 +38,7 @@ export class WarningCentreComponent implements OnInit, OnDestroy {
 
   borderClass$: Observable<string>;
 
-  customerTypes = [{ label: 'Customer / SDS', value: 'sds' }];
+  customerTypes = [{ label: 'Trainer / Pokémon', value: 'pokemon' }];
   customerType = this.customerTypes[0];
 
 
