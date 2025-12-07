@@ -14,20 +14,20 @@ test.describe('Warning Centre UI', () => {
     const overlay = page.locator('.bank-overlay');
     await expect(overlay).toBeVisible();
 
-    // Check all seeded warnings are present
+    // Check all seeded warnings are present (Pokémon mock data)
     await expect(overlay.locator('.error-item')).toHaveCount(4);
     await expect(overlay.locator('.msg-text')).toContainText([
-      'User profile could not be loaded. Please check your connection or try again later.',
-      'Notional Amount too low.',
-      'KYC documents are incomplete.',
-      'Market is now open.'
+      'Pikachu is missing from the Pokédex. Please check your connection to Professor Oak.',
+      'Charmander needs more training.',
+      'Bulbasaur has not completed gym registration.',
+      'The Pokémon League is now open.'
     ]);
 
     // Remove the first warning
     const firstCloseBtn = overlay.locator('.error-item .close-btn').first();
     await firstCloseBtn.click();
     await expect(overlay.locator('.error-item')).toHaveCount(3);
-    await expect(overlay.locator('.msg-text')).not.toContainText(['SDS Customer not found']);
+    await expect(overlay.locator('.msg-text')).not.toContainText(['MissingNo encountered']);
 
     // Clear all warnings
     await overlay.locator('.clear').click();
