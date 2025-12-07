@@ -8,14 +8,14 @@
     (click)="panel.toggle($event)"
     aria-label="Open Pokémon issues"
   ></button>
-
-  <input
-    type="text"
-    class="alert-label-input p-inputtext"
-    placeholder="Pokémon query"
-    aria-label="Pokémon query"
-  />
-
+          <i
+            class="error-bullet pi"
+            [ngClass]="{
+              'pi-exclamation-circle': msg.level === 'error',
+              'pi-exclamation-triangle': msg.level === 'warning',
+              'pi-info-circle': msg.level === 'info'
+            }"
+          ></i>
   <div class="search-input">
     <input
       type="text"
@@ -73,7 +73,6 @@
           (click)="onItemClick(msg.id)"
         >
           <i
-            class="error-bullet"
             [ngClass]="{
               'pi pi-exclamation-circle': msg.level === 'error',
               'pi pi-exclamation-triangle': msg.level === 'warning',
