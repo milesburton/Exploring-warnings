@@ -53,6 +53,11 @@ Notes:
 - Playwright config uses `webServer`, so it will start the dev server and wait for port readiness automatically.
 - The visual snapshot test lives in `e2e/visual.spec.ts` and uses `expect(page).toHaveScreenshot('warning-centre.png', { fullPage: true })`.
 - Baselines are stored next to the spec under a `*-snapshots/` folder; subsequent runs compare against the baseline and fail on diffs.
+- We also capture the UI with the dialog open in `e2e/visual-open.spec.ts` (soft assertion). It opens the popover via `.alert-icon-btn` and snapshots `warning-centre-open.png` to verify spacing and overlay visuals.
+
+Interaction behavior:
+- Error items auto-dismiss after 5s unless hovered or clicked — interaction cancels dismissal.
+- Removal applies a brief fade-and-collapse animation so the dialog size changes smoothly.
  - Snapshot assertion uses a soft check: `expect.soft(page).toHaveScreenshot(...)` so visual diffs warn but do not fail CI. Switch to a hard assertion if strict enforcement is required.
 
 ## Build
