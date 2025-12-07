@@ -9,27 +9,28 @@
     aria-label="Open Pokémon issues"
   ></button>
 
-  <button
-    pButton
-    type="button"
-    class="alert-label-btn"
-    label="Pokémon query"
-  ></button>
+  <input
+    type="text"
+    class="alert-label-input p-inputtext"
+    placeholder="Pokémon query"
+    aria-label="Pokémon query"
+  />
 
-  <p-dropdown
-    class="top-select"
-    [options]="customerTypes"
-    [(ngModel)]="customerType"
-    optionLabel="label"
-    styleClass="top-select-inner"
-    aria-label="Pokémon context"
-  ></p-dropdown>
+  <div class="search-input">
+    <input
+      type="text"
+      class="top-select-input p-inputtext"
+      placeholder="Trainer / Pokémon"
+      aria-label="Trainer / Pokémon search"
+    />
+    <i class="pi pi-search search-icon" aria-hidden="true"></i>
+  </div>
 
   <button
     pButton
     type="button"
     label="Catch Pokémon"
-    class="top-calc-btn p-button-sm"
+    class="top-calc-btn p-button-sm p-button-rounded"
   ></button>
 </div>
 
@@ -67,7 +68,7 @@
               'bullet-gold': msg.type === 'real-estate',
               'bullet-blue': msg.type === 'utility'
             }"
-            >!</span
+            >⚠️</span
           >
           <div class="msg-text">{{ msg.text }}</div>
           <button

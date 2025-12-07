@@ -1,5 +1,8 @@
+/* Popover spacing and content reset */
 .pok-overlay {
-  .p-overlaypanel-content {
+  margin-top: 10px;
+
+  .p-popover-content {
     padding: 0;
   }
 }
@@ -12,6 +15,46 @@
   border-radius: 10px;
   background: var(--bg-deep-2);
   border: 1px solid var(--bg-deep-3);
+
+.alert-label-input,
+.top-select-input {
+  background: radial-gradient(circle at top left, #111827 0, #020617 55%, #000 100%);
+  color: var(--text-panel, #e5e7eb);
+  border-radius: 8px;
+  border: 1px solid var(--border-muted, rgb(255 255 255 / 20%));
+  padding: 6px 12px;
+  min-width: 220px;
+}
+
+.alert-label-input::placeholder,
+.top-select-input::placeholder {
+  color: #9ca3af;
+}
+
+/* Search input wrapper with right-side icon */
+.search-input {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.search-input .top-select-input {
+  padding-right: 32px; /* room for icon */
+}
+
+.search-input .search-icon {
+  position: absolute;
+  right: 10px;
+  color: #9ca3af;
+  pointer-events: none;
+  font-size: 14px;
+}
+
+/* Match button height & corner radius to inputs */
+.top-calc-btn.p-button {
+  border-radius: 8px;
+  padding: 6px 12px;
+}
 }
 
 .alert-icon-btn {
@@ -170,6 +213,16 @@
 
 .error-bullet {
   margin-top: 3px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin-right: 10px;
+  font-weight: 700;
+  line-height: 1;
+  font-size: 18px;
 }
 
 .bullet-gold {
