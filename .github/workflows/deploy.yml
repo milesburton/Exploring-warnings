@@ -17,6 +17,8 @@ jobs:
           cache: npm
 
       - run: npm ci
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
       - run: npm test
       - name: Run Playwright E2E tests and generate report
         run: npm run test:e2e:report
