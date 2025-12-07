@@ -1,3 +1,11 @@
-npx lint-staged
 #!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Auto-bump version and write build info
+npm run bump:version
+
+# Ensure updated files are staged for commit
+git add package.json src/version.ts
+
+# Run lint-staged tasks
 npx lint-staged
