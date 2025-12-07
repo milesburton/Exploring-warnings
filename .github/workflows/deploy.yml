@@ -17,7 +17,7 @@ jobs:
           cache: npm
 
       - run: npm ci
-      - run: npm test -- --run
+      - run: npm test
       - name: Run Playwright E2E tests and generate report
         run: npm run test:e2e:report
       - run: npm run build -- --configuration production
