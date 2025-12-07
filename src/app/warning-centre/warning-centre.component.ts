@@ -35,7 +35,9 @@ export class WarningCentreComponent implements OnInit, OnDestroy {
   messages$: Observable<WarningMessage[]>;
 
   private autoDismissTimers: Map<string, any> = new Map();
+
   private protectedIds: Set<string> = new Set();
+
   private fadingIds: Set<string> = new Set();
 
   private destroy$ = new Subject<void>();
@@ -50,9 +52,7 @@ export class WarningCentreComponent implements OnInit, OnDestroy {
 
   customerType = this.customerTypes[0];
 
-
   private store = inject(Store);
-
 
   constructor() {
     this.messages$ = this.store.select(selectAllMessages);
@@ -117,6 +117,7 @@ export class WarningCentreComponent implements OnInit, OnDestroy {
     event.stopPropagation();
     this.store.dispatch(WarningsActions.clearAll());
   }
+
   onItemMouseEnter(id: string): void {
     const t = this.autoDismissTimers.get(id);
     if (t) {
