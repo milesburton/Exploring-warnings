@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, inject, OnInit, OnDestroy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, map, Subject, takeUntil } from 'rxjs';
 
@@ -62,6 +62,10 @@ export class WarningCentreComponent implements OnInit, OnDestroy {
   levels: WarningMessage['level'][] = ['error', 'warning', 'info'];
 
   private store = inject(Store);
+
+  @ViewChild('panel') panelRef: any;
+
+  private hoveredItemCount = 0;
 
   constructor() {
     this.messages$ = this.store.select(selectAllMessages);
@@ -134,10 +138,12 @@ export class WarningCentreComponent implements OnInit, OnDestroy {
       this.autoDismissTimers.delete(id);
     }
     this.protectedIds.add(id);
+
+    this.hoveredItemCount++;
   }
 
   onItemMouseLeave(id: string): void {
-    // Do not reschedule auto-dismiss automatically; user interacted.
+    this.hoveredItemCount = Math.max(0, this.hoveredItemCount - 1);
   }
 
   onItemClick(id: string): void {
@@ -157,5 +163,11 @@ export class WarningCentreComponent implements OnInit, OnDestroy {
       WarningsActions.addMessage({ message: { id, level, text, autoDismiss: false } })
     );
     this.newMessageText = '';
+  }
+
+  onPanelMouseLeave(): void {
+    if (this.hoveredItemCount === 0 && this.panelRef) {
+      this.panelRef.hide();
+    }
   }
 }
