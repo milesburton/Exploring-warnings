@@ -44,7 +44,7 @@
       <div class="error-header pok-header">
         <i [ngClass]="(iconClass$ | async)!"></i>
         <span class="title">
-          Issues ({{ (counts$ | async)?.error ?? 0 }}) with your Pokémon query
+          Issues ({{ (counts$ | async)?.total ?? 0 }}) with your Pokémon query
         </span>
         <a
           class="clear"
