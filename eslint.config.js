@@ -26,6 +26,15 @@ module.exports = [
             'import/no-duplicates': 'error',
             'import/order': 'warn',
             'lines-between-class-members': ['error', 'always'],
+            // Prevent accidental use of deprecated field name 'severity'
+            'no-restricted-syntax': [
+                'error',
+                {
+                    selector: "Property[key.name='severity']",
+                    message:
+                        "Use 'level' instead of 'severity' in warning-related objects.",
+                },
+            ],
         },
     },
 ];

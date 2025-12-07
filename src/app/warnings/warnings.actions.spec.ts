@@ -3,9 +3,9 @@ import { WarningsActions } from './warnings.actions';
 
 describe('WarningsActions', () => {
   it('should create Add Message action', () => {
-    const action = WarningsActions.addMessage({ message: { id: '1', text: 'Test', severity: 'error' } });
+    const action = WarningsActions.addMessage({ message: { id: '1', text: 'Test', level: 'error' } });
     expect(action.type).toBe('[Warnings] Add Message');
-    expect(action.message).toEqual({ id: '1', text: 'Test', severity: 'error' });
+    expect(action.message).toEqual({ id: '1', text: 'Test', level: 'error' });
   });
 
   it('should create Remove Message action', () => {
