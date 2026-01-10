@@ -14,10 +14,13 @@
       "source": "${localEnv:HOME}/.config/github-copilot",
       "target": "/home/node/.config/github-copilot",
       "type": "bind"
-    }
+    },
+    "source=${localEnv:HOME}/.config/claude,target=/home/node/.config/claude,type=bind"
   ],
   "postCreateCommand": "npm install -g @angular/cli@19 && npm install && npx playwright install",
-  "forwardPorts": [4200],
+  "forwardPorts": [
+    4200
+  ],
   "customizations": {
     "vscode": {
       "extensions": [
